@@ -11,7 +11,7 @@ from datetime import date
 
 """
 # Please input a coffee break.
-etstsertestsetrestststdsfasdfds
+If a break is already under way, you will be automatically added to this break.
 """
 
 def start_break():
