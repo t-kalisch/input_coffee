@@ -6,7 +6,9 @@ def expensive_computation(a, b):
     # 👇 Added this
     st.write("Cache miss: expensive_computation(", a, ",", b, ") ran")
     time.sleep(2)  # This makes the function take 2s to run
-    return int(a) * int(b)
+    if a != '' and b != '':
+        result=int(a)*int(b)
+    return result
 
 a = st.text_input(label="a")
 b = st.text_input(label="b")
