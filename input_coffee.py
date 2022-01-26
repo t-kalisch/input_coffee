@@ -8,8 +8,8 @@ def expensive_computation(a, b):
     time.sleep(2)  # This makes the function take 2s to run
     return a * b
 
-a = st.text_input()
-b = st.text_input()
+a = st.text_input(label="a")
+b = st.text_input(label="b")
 res = st.button(label="Calculate", on_click=expensive_computation(a, b))
 
 st.write("Result:", res)
