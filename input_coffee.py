@@ -6,7 +6,7 @@ st.set_page_config(page_title="Input Coffee",page_icon="chart_with_upwards_trend
 logged_in = False
 header,buf1 = st.columns([1000,0.00001])
 
-@st.cache
+@st.cache(suppress_st_warning=True)
 def check_login(user, user_pw):
     user_data = get_user_data()
     for i in range(len(user_data)):
