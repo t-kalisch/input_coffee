@@ -1,6 +1,6 @@
 import mysql.connector as mysql
 import streamlit as st
-from datetime import datetime
+from datetime import *
 
 @st.cache
 def get_user_data():
