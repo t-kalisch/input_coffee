@@ -3,7 +3,7 @@ import time
 from calculations import *
 
 logged_in = False
-header = st.columns([1])
+header,buf1 = st.columns([1,0])
 
 @st.cache
 def check_login(user, user_pw):
