@@ -6,7 +6,7 @@ logged_in = False
 header = st.columns([1])
 
 @st.cache
-def check_login(user, user_pw)
+def check_login(user, user_pw):
     user_data = get_user_data()
     for i in range(len(user_data)):
         if user == user_data[i][0] and user_pw == user_data[i][1]:
