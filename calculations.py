@@ -8,4 +8,7 @@ def get_user_data():
 	return user_data
 
 def check_breakstatus(now):
-	return now
+	last_break_start = datetime.datetime(2022,1,28,14,59,22.746774)
+	duration = now - last_break_start
+	duration.total_seconds()
+	return duration
