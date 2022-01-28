@@ -15,8 +15,6 @@ def check_login(user, user_pw):
             logged_in[0] = 1
             if user_data[i][2] == 1:
                 logged_in[1] = 1
-
-    st.write(logged_in)
     return logged_in
         
 def submit_coffee(user):
