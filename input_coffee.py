@@ -2,6 +2,7 @@ import streamlit as st
 import time
 from calculations import *
 
+st.set_page_config(page_title="Input Coffee",page_icon="chart_with_upwards_trend",layout="wide")
 logged_in = False
 header,buf1 = st.columns([1,0])
 
@@ -15,7 +16,7 @@ def check_login(user, user_pw):
             header.warning("Incorrect username or password.")
 
 
-st.set_page_config(page_title="Input Coffee",page_icon="chart_with_upwards_trend",layout="wide")
+
 
 
 col1,col2,col3 = st.columns([0.5,1,0.7])
