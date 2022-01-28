@@ -37,7 +37,8 @@ if login and logged_in == True:
     break_length = check_breakstatus(now)
     st.write(check_breakstatus(now).total_seconds())
     if break_length.total_seconds() < 900:
-        st.markdown("A coffee break is under way since "+str(int(break_length.seconds/60))+":"+str(break_length.seconds-(60*int(break_length.seconds/60))))
+        col2.markdown("A coffee break is under way since "+str(int(break_length.seconds/60))+":"+str(break_length.seconds-(60*int(break_length.seconds/60)))+".")
         submit_coffee = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.")
     elif break_length.total_seconds() >= 900:
+        col2.markdown("No coffee break is currently under way."
         submit_coffee = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.")
