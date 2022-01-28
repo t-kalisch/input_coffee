@@ -8,19 +8,15 @@ buf1,header2,buf2 = st.columns([0.5,1,0.7])
 
 @st.cache(suppress_st_warning=True)
 def check_login(user, user_pw):
-    logged_in=[]
+    logged_in=[0,0]
     user_data = get_user_data()
     for i in range(len(user_data)):
         if user == user_data[i][0] and user_pw == user_data[i][1]:
-
-            logged_in.append(1)
+            logged_in[0] = 1
             if user_data[i][2] == 1:
-                logged_in.append(1)
-            else:
-                logged_in.append(0)
+                logged_in[1] = 1
         else:
-            logged_in.append(0)
-            logged_in.append(0)
+
     st.write(logged_in)
     return logged_in
         
