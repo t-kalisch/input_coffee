@@ -26,8 +26,8 @@ login = col2.checkbox("Login", help="You are logged in while this checkbox is ti
 if login:
     logged_in = check_login(user, user_pw)
     if logged_in == True:
-        header.markdown("Logged in as "+user)
+        col2.markdown("Logged in as "+user)
     else:
-        header.markdown("Please log in to submit a coffee")
+        col2.markdown("Incorrect username or password")
 else:
-    header.markdown("Please log in to submit a coffee")
+    col2.markdown("Please log in to submit a coffee")
