@@ -4,7 +4,7 @@ from calculations import *
 
 st.set_page_config(page_title="Input Coffee",page_icon="chart_with_upwards_trend",layout="wide")
 logged_in = False
-header,buf1 = st.columns([1,0])
+header,buf1 = st.columns([1,0.1])
 
 @st.cache
 def check_login(user, user_pw):
