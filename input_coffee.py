@@ -11,8 +11,6 @@ def check_login(user, user_pw):
     logged_in=[]
     user_data = get_user_data()
     for i in range(len(user_data)):
-        st.write(user_data[i][0])
-        st.write(user_data[i][1])
         if user == user_data[i][0] and user_pw == user_data[i][1]:
 
             logged_in.append(1)
