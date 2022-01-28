@@ -1,15 +1,10 @@
 import streamlit as st
 import time
 
-@st.cache(suppress_st_warning=True)  # 👈 Changed this
-def expensive_computation(a, b):
-    # 👇 Added this
-    st.write("Cache miss: expensive_computation(", a, ",", b, ") ran")
-    time.sleep(5)  # This makes the function take 2s to run
-    return a * b
 
-a = 2
-b = 20
-res = expensive_computation(a, b)
+st.set_page_config(page_title="Input Coffee",page_icon="chart_with_upwards_trend",layout="wide")
 
-st.write("Result:", res)
+col1,col2 = st.columns([1,1])
+user = col1.text_input(label="", placeholder="Username")
+user_pw = col2.text_input(label="", type="password", placeholder="Password")
+login = col1.checkbox("Login", help="You are logged in while this checkbox is ticked")
