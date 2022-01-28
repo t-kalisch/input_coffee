@@ -23,6 +23,7 @@ def check_login(user, user_pw):
         else:
             logged_in.append(0)
             logged_in.append(0)
+    st.write(logged_in)
     return logged_in
         
 def submit_coffee(user):
