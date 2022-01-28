@@ -17,8 +17,17 @@ def check_login(user, user_pw):
                 logged_in[1] = 1
     return logged_in
         
-def submit_coffee(user):
-    #write definition that adds a coffee to current break
+def submit_coffee(user, logged_in):
+    active = []
+    if logged_in[1] == 1:
+        if name == "":
+            active.append(user)
+        else:
+            active.append(name)
+    else:
+        active.append(name)
+    active.append(1)
+    st.write(active)
     return
 
 
@@ -56,6 +65,6 @@ if login and logged_in[0] == 1:
         col2.button("Update")
         if logged_in[1] == 1:
             name = col2.text_input("Drinker", placeholder = "Username")
-            submit_coffee = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click = submit_coffee(user))
+            submit_coffee = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click = submit_coffee(user, logged_in))
         else:
-            submit_coffee = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click = submit_coffee(user))
+            submit_coffee = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click = submit_coffee(user, logged_in))
