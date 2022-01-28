@@ -4,7 +4,7 @@ from calculations import *
 
 st.set_page_config(page_title="Input Coffee",page_icon="chart_with_upwards_trend",layout="wide")
 logged_in = False
-header,buf1 = st.columns([1000,0.00001])
+buf1,header2,buf2 = st.columns([0.5,1,0.7])
 
 @st.cache(suppress_st_warning=True)
 def check_login(user, user_pw):
@@ -26,8 +26,8 @@ login = col2.checkbox("Login", help="You are logged in while this checkbox is ti
 if login:
     logged_in = check_login(user, user_pw)
     if logged_in == True:
-        col2.markdown("Logged in as "+user)
+        header2.markdown("Logged in as "+user)
     else:
-        col2.markdown("Incorrect username or password")
+        header2.markdown("Incorrect username or password")
 else:
-    col2.markdown("Please log in to submit a coffee")
+    header2.markdown("Please log in to submit a coffee")
