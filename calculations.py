@@ -23,5 +23,5 @@ def submit_coffee(user, name, logged_in):
     else:
         active.append(user)
     active.append(1)
-    st.write(active)
-    return active
+    
+    return
