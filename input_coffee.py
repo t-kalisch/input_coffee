@@ -24,4 +24,6 @@ user = col2.text_input(label="", placeholder="Username")
 user_pw = col2.text_input(label="", type="password", placeholder="Password")
 login = col2.checkbox("Login", help="You are logged in while this checkbox is ticked")
 if login:
-  logged_in = check_login(user, user_pw)
+    logged_in = check_login(user, user_pw)
+    if logged_in == True:
+        header.subheader("Logged in as "+user)
