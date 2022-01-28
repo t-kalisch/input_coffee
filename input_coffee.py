@@ -1,5 +1,5 @@
 import streamlit as st
-import time
+import datetime
 from calculations import *
 
 st.set_page_config(page_title="Input Coffee",page_icon="chart_with_upwards_trend",layout="wide")
@@ -31,3 +31,9 @@ if login:
         header2.markdown("Incorrect username or password")
 else:
     header2.markdown("Please log in to submit a coffee")
+
+if login and logged_in == True:
+    if check_breakstatus() == False:
+        submit_coffee = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.")
+    elif check_breakstatus() == True:
+        submit_coffee = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.")
