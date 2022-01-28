@@ -36,7 +36,7 @@ if login and logged_in == True:
     now = datetime.datetime.now()
     st.write(now)
     st.write(check_breakstatus(now).total_seconds())
-    #if check_breakstatus(now).total_seconds() < :
-    #    submit_coffee = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.")
-    #elif check_breakstatus(now) == True:
-    #    submit_coffee = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.")
+    if check_breakstatus(now).total_seconds() < 900:
+        submit_coffee = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.")
+    elif check_breakstatus(now).total_seconds() >= 900:
+        submit_coffee = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.")
