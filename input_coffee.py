@@ -1,5 +1,5 @@
 import streamlit as st
-from datetime import datetime
+import datetime
 from calculations import *
 
 st.set_page_config(page_title="Input Coffee",page_icon="chart_with_upwards_trend",layout="wide")
@@ -33,7 +33,7 @@ else:
     header2.markdown("Please log in to submit a coffee")
 
 if login and logged_in == True:
-    now = datetime.now()
+    now = datetime.datetime.now()
     st.write(now)
     st.write(check_breakstatus(now))
     #if check_breakstatus(now) < :
