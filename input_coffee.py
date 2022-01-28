@@ -37,8 +37,12 @@ else:
 if login and logged_in == True:
     now = datetime.datetime.now()
     break_length = check_breakstatus(now)
+    minutes = str(int(break_length.seconds/60))
+    seconds = break_length.seconds-(60*int(break_length.seconds/60))
+    if seconds < 10:
+        seconds = "0"+str(seconds)
     if break_length.total_seconds() < 900:
-        col2.markdown("A coffee break is under way since "+str(int(break_length.seconds/60))+":"+str(break_length.seconds-(60*int(break_length.seconds/60)))+".")
+        col2.markdown("A coffee break is under way since "+str(minutes)+":"+str(seconds)+".")
         col2.button("Update")
         submit_coffee = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.", on_click = submit_coffee(user))
     elif break_length.total_seconds() >= 900:
