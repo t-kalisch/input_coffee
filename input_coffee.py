@@ -1,5 +1,5 @@
 import streamlit as st
-from datetime import datetime
+from datetime import *
 from calculations import *
 
 st.set_page_config(page_title="Input Coffee",page_icon="chart_with_upwards_trend",layout="wide")
