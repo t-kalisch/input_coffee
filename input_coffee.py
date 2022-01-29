@@ -36,6 +36,7 @@ if login and logged_in[0] == 1:
     break_length = check_breakstatus(now)
     minutes = str(int(break_length.seconds/60))
     seconds = break_length.seconds-(60*int(break_length.seconds/60))
+    strseconds = str(seconds)
     if seconds < 10:
         strseconds = "0"+str(seconds)
     if break_length.total_seconds() < 900:
