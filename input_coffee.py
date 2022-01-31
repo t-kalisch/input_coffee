@@ -19,7 +19,7 @@ def check_login(user, user_pw):
 
 def on_click_action():
     st.write("Button clicked")
-    st.write(session_state)
+    st.write(st.session_state)
 
 
 
