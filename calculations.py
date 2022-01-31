@@ -23,7 +23,7 @@ def submit_coffee(user, name, logged_in):
     else:
         active.append(user)
     active.append(1)
-    st.session_state.submit = active
-    st.write(st.session_state.submit)
+    #st.session_state.submit = active
+    #st.write(st.session_state.submit)
     #st.write(active)
     return
