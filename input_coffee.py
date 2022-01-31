@@ -19,12 +19,8 @@ def check_login(user, user_pw):
                 logged_in[1] = 1
     return logged_in
 
-def on_click_action():
-    if 'submit' not in st.session_state:
-        st.session_state.submit = 'value'
-    st.write(st.session_state.submit)
-    st.write("Button clicked")
-    #st.write(st.session_state)
+if 'submit' not in st.session_state:
+    st.session_state.submit = 0
 
 
 
@@ -65,3 +61,6 @@ if login and logged_in[0] == 1:
             submit_coffee = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click = submit_coffee(user, name, logged_in))
         else:
             submit_coffee = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click = submit_coffee(user, "", logged_in))
+if submit_coffee:
+    st.session_state += 1
+st.write(st.session_state.submit)
