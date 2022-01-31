@@ -18,7 +18,7 @@ def check_login(user, user_pw):
     return logged_in
 
 def on_click_action():
-    st.write(st.session_state.my_slider)
+    st.write(st.session_state.submit_coffee)
     st.write("Button clicked")
     st.write(st.session_state)
 
