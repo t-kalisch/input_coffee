@@ -64,5 +64,5 @@ if login and logged_in[0] == 1:
     if submit_coffee:
         st.session_state.submit += 1
 st.write(st.session_state.submit)
-if update
+if update:
     st.write(count+1)
