@@ -24,7 +24,7 @@ def on_click_action():
         st.session_state.submit = 'value'
     st.write(st.session_state.submit)
     st.write("Button clicked")
-    st.write(st.session_state)
+    #st.write(st.session_state)
 
 
 
