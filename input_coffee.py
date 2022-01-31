@@ -22,7 +22,7 @@ def check_login(user, user_pw):
 def on_click_action():
     if 'submit' not in st.session_state:
         st.session_state.submit = 'value'
-    st.write(st.session_state.submit_coffee)
+    st.write(st.session_state.submit)
     st.write("Button clicked")
     st.write(st.session_state)
 
