@@ -62,5 +62,5 @@ if login and logged_in[0] == 1:
         else:
             submit_coffee = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click = submit_coffee(user, "", logged_in))
 if submit_coffee:
-    st.session_state += 1
+    st.session_state.submit += 1
 st.write(st.session_state.submit)
