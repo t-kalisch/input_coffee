@@ -22,7 +22,7 @@ def check_login(user, user_pw):
 if 'submit' not in st.session_state:
     st.session_state.submit = 0
 
-
+count=0
 
 col1,col2,col3 = st.columns([0.5,1,0.7])
 user = col2.text_input(label="", placeholder="Username")
@@ -55,7 +55,7 @@ if login and logged_in[0] == 1:
             submit_coffee = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.", on_click = submit_coffee(user, "", logged_in))
     elif break_length.total_seconds() >= 900:
         col2.markdown("No coffee break is currently under way.")
-        col2.button("Update")
+        update = col2.button("Update")
         if logged_in[1] == 1:
             name = col2.text_input("Drinker", placeholder = "Username")
             submit_coffee = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click = submit_coffee(user, name, logged_in))
@@ -64,3 +64,5 @@ if login and logged_in[0] == 1:
     if submit_coffee:
         st.session_state.submit += 1
 st.write(st.session_state.submit)
+if update
+    st.write(count+1)
