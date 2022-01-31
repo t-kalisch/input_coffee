@@ -25,5 +25,6 @@ def submit_coffee(user, name, logged_in):
     active.append(1)
     if 'submit' not in st.session_state:
         st.session_state.submit = active
+    st.write(st.session_state.submit_coffee)
     st.write(active)
     return
