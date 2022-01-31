@@ -17,7 +17,7 @@ def check_login(user, user_pw):
                 logged_in[1] = 1
     return logged_in
 
-def on_click_action:
+def on_click_action():
     st.write("Button clicked")
 
 
