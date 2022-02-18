@@ -70,7 +70,7 @@ if st.session_state.logged_in == True:
     if break_length.total_seconds() < 900:
         col2.markdown("A coffee break is under way since "+str(minutes)+":"+strseconds+".")
         col2.button("Update")
-        if logged_in[1] == 1:
+        if st.session_state.admin == True:
             name = col2.text_input("Drinker", placeholder = "Username")
             submit_coffee = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.", on_click = submit_coffee(user, name, logged_in))
         else:
