@@ -86,4 +86,7 @@ if st.session_state.logged_in == True:
     if submit_coffee:
         st.session_state.submit += 1
 st.write(st.session_state.submit)
+st.write(st.session_state.logged_in)
+st.write(st.session_state.admin)
+st.write(st.session_state.attempt)
 
