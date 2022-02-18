@@ -6,7 +6,14 @@ st.set_page_config(page_title="Input Coffee",page_icon="chart_with_upwards_trend
 logged_in = False
 buf1,header2,buf2 = st.columns([0.5,1,0.7])
 
-
+if 'submit' not in st.session_state:
+    st.session_state.submit = 0
+if 'logged_in' not in st.session_state:
+    st.session_state.logged_in=False
+if 'attempt' not in st.session_state:
+    st.session_state.attempt=False
+if 'admin' not in st.session_state:
+    st.session_state.admin=False
 
 
 @st.cache(suppress_st_warning=True)
@@ -20,15 +27,6 @@ def check_login(user, user_pw):
                 logged_in[1] = 1
                 st.session_state.admin=True
     return logged_in
-
-if 'submit' not in st.session_state:
-    st.session_state.submit = 0
-if 'logged_in' not in st.session_state:
-    st.session_state.logged_in=False
-if 'attempt' not in st.session_state:
-    st.session_state.attempt=False
-if 'admin' not in st.session_state:
-    st.session_state.admin=False
 
 count=0
 
