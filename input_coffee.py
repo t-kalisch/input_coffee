@@ -38,7 +38,7 @@ col1,col2,col3,col4 = st.columns([0.5,0.7,0.3,0.7])
 login = col2.button("Login", help="You are logged in while this checkbox is ticked")
 logout = col3.button("Logout")
 
-if login:
+if login: 
     logged_in = check_login(user, user_pw)
     if logged_in[0] == 1:
         st.session_state.logged_in=True
