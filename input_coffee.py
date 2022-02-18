@@ -18,6 +18,7 @@ def check_login(user, user_pw):
             logged_in[0] = 1
             if user_data[i][2] == 1:
                 logged_in[1] = 1
+                st.session_state.admin=True
     return logged_in
 
 if 'submit' not in st.session_state:
@@ -26,6 +27,8 @@ if 'logged_in' not in st.session_state:
     st.session_state.logged_in=False
 if 'attempt' not in st.session_state:
     st.session_state.attempt=False
+if 'admin' not in st.session_state:
+    st.session_state.admin=False
 
 count=0
 
@@ -48,6 +51,7 @@ if login:
 if logout:
     st.session_state.logged_in=False
     st.session_state.attempt=False
+    st.session_state.admin=False
         
         
 if st.session_state.logged_in == True and st.session_state.attempt == False:
@@ -74,11 +78,11 @@ if st.session_state.logged_in == True:
     elif break_length.total_seconds() >= 900:
         col2.markdown("No coffee break is currently under way.")
         update = col2.button("Update")
-        if logged_in[1] == 1:
+        if st.session_state.admin == True:
             name = col2.text_input("Drinker", placeholder = "Username")
-            submit_coffee = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click = submit_coffee(user, name, logged_in))
+            submit_coffee = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click = submit_coffee(user, name, st.session_state.admin))
         else:
-            submit_coffee = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click = submit_coffee(user, "", logged_in))
+            submit_coffee = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click = submit_coffee(user, "", st.session_state.admin))
     if submit_coffee:
         st.session_state.submit += 1
 st.write(st.session_state.submit)
