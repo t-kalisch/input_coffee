@@ -8,6 +8,7 @@ buf1,header2,buf2 = st.columns([0.5,1,0.7])
 
 
 
+
 @st.cache(suppress_st_warning=True)
 def check_login(user, user_pw):
     logged_in=[0,0]
@@ -21,23 +22,40 @@ def check_login(user, user_pw):
 
 if 'submit' not in st.session_state:
     st.session_state.submit = 0
+if 'logged_in' not in st.session_state:
+    st.session_state.logged_in=False
+if 'attempt' not in st.session_state:
+    st.session_state.attempt=False
 
 count=0
 
 col1,col2,col3 = st.columns([0.5,1,0.7])
 user = col2.text_input(label="", placeholder="Username")
 user_pw = col2.text_input(label="", type="password", placeholder="Password")
-login = col2.checkbox("Login", help="You are logged in while this checkbox is ticked")
+col1,col2,col3,col4 = st.columns([0.5,0.7,0.3,0.7])
+login = col2.button("Login", help="You are logged in while this checkbox is ticked")
+logout = col3.button("Logout")
+
 if login:
     logged_in = check_login(user, user_pw)
     if logged_in[0] == 1:
-        header2.markdown("Logged in as "+user)
-    else:
+        st.session_state.logged_in=True
+        st.session_state.attempt=False
+    elif st.session_state.attempt == True:
         header2.markdown("Incorrect username or password")
+        st.session_state.attempt=True
+
+if logout:
+    st.session_state.logged_in=False
+    st.session_state.attempt=False
+        
+        
+if st.session_state.logged_in == True and st.session_state.attempt == False:
+    header2.markdown("Logged in as "+user)
 else:
     header2.markdown("Please log in to submit a coffee")
 
-if login and logged_in[0] == 1:
+if st.session_state.logged_in == True:
     now = datetime.datetime.now()
     break_length = check_breakstatus(now)
     minutes = str(int(break_length.seconds/60))
