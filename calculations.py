@@ -13,9 +13,9 @@ def check_breakstatus(now):
 	#duration.total_seconds()
 	return duration
 
-def submit_coffee(user, name, logged_in):
+def submit_coffee(user, name, admin):
     active = []
-    if logged_in[1] == 1:
+    if admin == True:
         if name == "":
             active.append(user)
         else:
