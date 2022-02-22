@@ -35,22 +35,27 @@ col1,col2,col3 = st.columns([0.5,1,0.7])
 user = col2.text_input(label="", placeholder="Username")
 user_pw = col2.text_input(label="", type="password", placeholder="Password")
 col1,col2,col3,col4 = st.columns([0.5,0.7,0.3,0.7])
-login = col2.button("Login", help="You are logged in while this checkbox is ticked")
-logout = col3.button("Logout")
+if st.session_state.logged_in==True:
+    logout = col3.button("Logout")
+else:
+    login = col2.button("Login", help="You are logged in while this checkbox is ticked")
 
-if login: 
-    logged_in = check_login(user, user_pw)
-    if logged_in[0] == 1:
-        st.session_state.logged_in=True
+
+
+if st.session_state.logged_in==True:
+    if logout:
+        st.session_state.logged_in=False
         st.session_state.attempt=False
-    elif st.session_state.attempt == True:
-        header2.markdown("Incorrect username or password")
-        st.session_state.attempt=True
-
-if logout:
-    st.session_state.logged_in=False
-    st.session_state.attempt=False
-    st.session_state.admin=False
+        st.session_state.admin=False
+else:
+    if login: 
+        logged_in = check_login(user, user_pw)
+        if logged_in[0] == 1:
+            st.session_state.logged_in=True
+            st.session_state.attempt=False
+        elif st.session_state.attempt == True:
+            header2.markdown("Incorrect username or password")
+            st.session_state.attempt=True    
         
         
 if st.session_state.logged_in == True and st.session_state.attempt == False:
