@@ -17,7 +17,6 @@ if 'admin' not in st.session_state:
 
 
 def check_login(user, user_pw):
-    logged_in=[0,0]
     user_data = get_user_data()
     for i in range(len(user_data)):
         if user == user_data[i][0] and user_pw == user_data[i][1]:
