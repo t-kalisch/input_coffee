@@ -40,11 +40,13 @@ count=0
 col1,col2,col3 = st.columns([0.5,1,0.7])
 user = col2.text_input(label="", placeholder="Username")
 user_pw = col2.text_input(label="", type="password", placeholder="Password")
-col1,col2,col3 = st.columns([0.5,1,0.7])
+col1,col2,col3,col4 = st.columns([0.5,0.6,0.4,0.7])
 if st.session_state.logged_in == True:
     logout = col2.button("Logout", help="Click here to log out")
 else:
     login = col2.button("Login", help="Click here to log in")
+    
+col3.checkbox("Remember me", help="Keep me logged in")
 
 
 
