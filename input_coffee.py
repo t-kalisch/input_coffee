@@ -6,7 +6,7 @@ st.set_page_config(page_title="Input Coffee",page_icon="coffee",layout="wide")
 
 logged_in = False
 buf1,header2,buf2 = st.columns([0.5,1,0.7])
-header2.title(**:coffee:**)
+header2.title("**:coffee:**")
 
 if 'submit' not in st.session_state:
     st.session_state.submit = 0
