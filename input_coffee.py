@@ -49,7 +49,7 @@ if st.session_state.logged_in == True:
         st.session_state.admin=False
 else:
     if login: 
-        logged_in = check_login(user, user_pw)
+        check_login(user, user_pw)
 
 
 if st.session_state.attempt == True:
