@@ -22,12 +22,13 @@ def check_login(user, user_pw):
     for i in range(len(user_data)):
         if user == user_data[i][0] and user_pw == user_data[i][1]:
             logged_in = True
+            if user_data[i][2] == 1:
+                st.session_state.admin=True
     if logged_in == True:
         st.session_state.logged_in=True
         st.session_state.attempt=False
         st.session_state.submit=0
-        if user_data[i][2] == 1:
-            st.session_state.admin=True
+
     else:
         st.session_state.logged_in=False
         st.session_state.attempt=True    
