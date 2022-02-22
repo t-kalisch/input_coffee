@@ -36,7 +36,7 @@ user = col2.text_input(label="", placeholder="Username")
 user_pw = col2.text_input(label="", type="password", placeholder="Password")
 col1,col2,col3,col4 = st.columns([0.5,0.7,0.3,0.7])
 if st.session_state.logged_in==True:
-    logout = col3.button("Logout")
+    logout = col2.button("Logout")
 else:
     login = col2.button("Login", help="You are logged in while this checkbox is ticked")
 
