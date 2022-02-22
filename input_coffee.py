@@ -52,6 +52,7 @@ else:
         if logged_in[0] == 1:
             st.session_state.logged_in=True
             st.session_state.attempt=False
+            st.session_state.submit=0
         elif st.session_state.attempt == True:
             st.session_state.attempt=True    
 
@@ -94,4 +95,5 @@ st.write(st.session_state.submit)
 st.write(st.session_state.logged_in)
 st.write(st.session_state.admin)
 st.write(st.session_state.attempt)
+
 
