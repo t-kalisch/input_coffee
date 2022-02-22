@@ -3,7 +3,7 @@ import datetime
 from calculations import *
 
 st.set_page_config(page_title="Input Coffee",page_icon="coffee",layout="wide")
-st.header("Coffee input"+page_icon="coffee")
+st.title("Coffee input"+page_icon="coffee")
 logged_in = False
 buf1,header2,buf2 = st.columns([0.5,1,0.7])
 
