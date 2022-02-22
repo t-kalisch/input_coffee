@@ -38,9 +38,9 @@ user = col2.text_input(label="", placeholder="Username")
 user_pw = col2.text_input(label="", type="password", placeholder="Password")
 col1,col2,col3 = st.columns([0.5,1,0.7])
 if st.session_state.logged_in == True:
-    logout = col2.button("Logout")
+    logout = col2.button("Logout", help="Click here to log out")
 else:
-    login = col2.button("Login", help="You are logged in while this checkbox is ticked")
+    login = col2.button("Login", help="Click here to log in")
 
 
 
@@ -52,10 +52,6 @@ if st.session_state.logged_in == True:
 else:
     if login: 
         check_login(user, user_pw)
-
-
-if st.session_state.attempt == True:
-    header2.markdown("Incorrect username or password")
             
         
 if st.session_state.logged_in == True and st.session_state.attempt == False:
@@ -63,6 +59,11 @@ if st.session_state.logged_in == True and st.session_state.attempt == False:
 else:
     header2.markdown("Please log in to submit a coffee")
 
+    
+    
+if st.session_state.attempt == True:
+    st.warning("Incorrect username or password")
+    
 if st.session_state.logged_in == True:
     now = datetime.datetime.now()
     break_length = check_breakstatus(now)
