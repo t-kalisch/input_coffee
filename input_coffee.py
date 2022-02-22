@@ -15,18 +15,20 @@ if 'attempt' not in st.session_state:
 if 'admin' not in st.session_state:
     st.session_state.admin=False
 
-@st.cache(suppress_st_warning=True)
+
 def check_login(user, user_pw):
     logged_in=[0,0]
     user_data = get_user_data()
     for i in range(len(user_data)):
         if user == user_data[i][0] and user_pw == user_data[i][1]:
-            st.write(user_data[i][2])
-            logged_in[0] = 1
+            st.session_state.logged_in=True
+            st.session_state.attempt=False
+            st.session_state.submit=0
             if user_data[i][2] == 1:
-                logged_in[1] = 1
                 st.session_state.admin=True
-    return logged_in
+        else:
+            st.session_state.logged_in=False
+            st.session_state.attempt=True    
 
 count=0
 
@@ -49,12 +51,7 @@ if st.session_state.logged_in == True:
 else:
     if login: 
         logged_in = check_login(user, user_pw)
-        if logged_in[0] == 1:
-            st.session_state.logged_in=True
-            st.session_state.attempt=False
-            st.session_state.submit=0
-        elif st.session_state.attempt == True:
-            st.session_state.attempt=True    
+
 
 if st.session_state.attempt == True:
     header2.markdown("Incorrect username or password")
