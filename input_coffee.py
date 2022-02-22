@@ -53,9 +53,11 @@ else:
             st.session_state.logged_in=True
             st.session_state.attempt=False
         elif st.session_state.attempt == True:
-            header2.markdown("Incorrect username or password")
             st.session_state.attempt=True    
-        
+
+if st.session_state.attempt == True:
+    header2.markdown("Incorrect username or password")
+            
         
 if st.session_state.logged_in == True and st.session_state.attempt == False:
     header2.markdown("Logged in as "+user)
