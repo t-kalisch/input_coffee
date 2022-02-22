@@ -2,7 +2,7 @@ import streamlit as st
 import datetime
 from calculations import *
 
-st.set_page_config(page_title="Input Coffee",page_icon="scientist",layout="wide")
+st.set_page_config(page_title="Input Coffee",page_icon="coffee",layout="wide")
 logged_in = False
 buf1,header2,buf2 = st.columns([0.5,1,0.7])
 
