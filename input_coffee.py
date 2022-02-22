@@ -15,7 +15,7 @@ if 'attempt' not in st.session_state:
 if 'admin' not in st.session_state:
     st.session_state.admin=False
 
-
+@st.cache(suppress_st_warning=True)
 def check_login(user, user_pw):
     logged_in=[0,0]
     user_data = get_user_data()
