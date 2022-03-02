@@ -19,8 +19,12 @@ def get_user_data():
 
 
 def check_breakstatus(now):
-	last_break_start = datetime.datetime(2022,1,29,17,25,22)
-	duration = now - last_break_start
+	db = init_connection()
+	cursor = db.cursor(buffered=True)
+	
+	cursor.execute("select last_break from update_status")
+	last_break = cursor.fetchall()
+	duration = now - last_break[0][0]
 	#duration.total_seconds()
 	return duration
 
