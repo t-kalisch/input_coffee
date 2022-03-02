@@ -86,11 +86,11 @@ if st.session_state.logged_in == True:
         if st.session_state.admin == True:
             name = col2.text_input("Drinker", placeholder = "Username")
             submit_button = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.")
-            if submit_coffee:
+            if submit_button:
                 submit_coffee(user, name, "new")
         else:
             submit_button = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.")
-            if submit_coffee:
+            if submit_button:
                 submit_coffee(user, "", "new")
     elif break_length.total_seconds() >= 900:
         status = "new"
@@ -99,11 +99,11 @@ if st.session_state.logged_in == True:
         if st.session_state.admin == True:
             name = col2.text_input("Drinker", placeholder = "Username")
             submit_button = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.")
-            if submit_coffee:
+            if submit_button:
                 submit_coffee(user, name, "add")
         else:
             submit_button = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.")
-            if submit_coffee:
+            if submit_button:
                 submit_coffee(user, "", "add")
 st.write(st.session_state.submit)
 st.write(st.session_state.logged_in)
