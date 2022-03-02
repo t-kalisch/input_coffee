@@ -25,20 +25,16 @@ def check_breakstatus(now):
 	cursor.execute("select last_break from update_status")
 	last_break = cursor.fetchall()
 	duration = now - last_break[0][0]
+	
+	db.close()
 	return duration
 
 
 def submit_coffee(user, name, admin, status):
-    #active = []
-    #if admin == True:
-    #    if name == "":
-    #        active.append(user)
-    #    else:
-    #        active.append(name)
-    #else:
-    #    active.append(user)
-    #active.append(1)
-    #st.session_state.submit = active
-    #st.write(st.session_state.submit)
-    #st.write(active)
-    return
+	db = init_connection()
+	cursor = db.cursor(buffered=True)
+	
+	cursor.execute("update update_status set last_break = current_timestamp()")
+	
+	db.close()
+	return
