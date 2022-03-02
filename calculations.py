@@ -36,5 +36,6 @@ def submit_coffee(user, name, admin, status):
 	
 	cursor.execute("update update_status set last_break = current_timestamp()")
 	
+	db.commit()
 	db.close()
 	return
