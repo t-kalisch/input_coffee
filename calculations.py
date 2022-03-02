@@ -30,7 +30,7 @@ def check_breakstatus(now):
 	return duration
 
 
-def submit_coffee(user, name, admin, status):
+def submit_coffee(user, name, status):
 	db = init_connection()
 	cursor = db.cursor(buffered=True)
 	
