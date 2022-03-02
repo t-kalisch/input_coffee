@@ -25,7 +25,7 @@ def check_breakstatus(now):
 	cursor.execute("select last_break from update_status")
 	last_break = cursor.fetchall()
 	duration = now - last_break[0][0]
-	
+
 	db.close()
 	return duration
 
@@ -36,14 +36,12 @@ def submit_coffee(user, name, status):
 	
 	if status == "new":
 		cursor.execute("update update_status set last_break = current_timestamp()")
-		st.write("added")
+		st.write("new")
 	elif status == "add":
-		st.write("öafdj")
 		cursor.execute("select max(id_ext) from breaks")
 		id_ext=cursor.fetchall()
 		cursor.execute("select n_coffees from mbr_"+user.upper()+" where id_ext = "+id_ext[0][0])
-		
-	
+		st.write("add")
 	db.commit()
 	db.close()
 	return
