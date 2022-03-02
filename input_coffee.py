@@ -73,13 +73,13 @@ if st.session_state.attempt == True:
 if st.session_state.logged_in == True:
     now = datetime.datetime.now()
     st.write(now)
-    break_length = check_breakstatus(now)
+    break_active = check_breakstatus(now)
     minutes = str(int(break_length.seconds/60))
     seconds = break_length.seconds-(60*int(break_length.seconds/60))
     strseconds = str(seconds)
     if seconds < 10:
         strseconds = "0"+str(seconds)
-    if break_length.total_seconds() < 900:
+    if break_active == True:
         col2.markdown("A coffee break is under way since "+str(minutes)+":"+strseconds+".")
         col2.button("Update")
         if st.session_state.admin == True:
@@ -87,7 +87,7 @@ if st.session_state.logged_in == True:
             submit_coffee = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.", on_click = submit_coffee(user, name, logged_in))
         else:
             submit_coffee = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.", on_click = submit_coffee(user, "", logged_in))
-    elif break_length.total_seconds() >= 900:
+    elif break_active == False:
         col2.markdown("No coffee break is currently under way.")
         update = col2.button("Update")
         if st.session_state.admin == True:
