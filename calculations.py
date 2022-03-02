@@ -34,7 +34,15 @@ def submit_coffee(user, name, admin, status):
 	db = init_connection()
 	cursor = db.cursor(buffered=True)
 	
-	cursor.execute("update update_status set last_break = current_timestamp()")
+	if status == "new":
+		cursor.execute("update update_status set last_break = current_timestamp()")
+		
+	elif status == "add":
+		cursor.execute("select max(id_ext) from breaks")
+		id_ext=cursor.fetchall()
+		st.write(id_ext)
+		cursor.execute("select n_coffees from mbr_"+user.upper()+" where id_ext = "+tmp[0][0])
+		
 	
 	db.commit()
 	db.close()
