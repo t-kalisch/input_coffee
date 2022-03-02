@@ -98,10 +98,12 @@ if st.session_state.logged_in == True:
             submit_button = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.")
             if submit_button:
                 submit_coffee(user, name, "new")
+                break_length = check_breakstatus(now)
         else:
             submit_button = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.")
             if submit_button:
                 submit_coffee(user, "", "new")
+                break_length = check_breakstatus(now)
 st.write(st.session_state.submit)
 st.write(st.session_state.logged_in)
 st.write(st.session_state.admin)
