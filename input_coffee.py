@@ -78,6 +78,7 @@ if st.session_state.logged_in == True:
     seconds = break_length.seconds-(60*int(break_length.seconds/60))
     strseconds = str(seconds)
     st.write(break_length)
+    st.write(break_length.total_seconds())
     if seconds < 10:
         strseconds = "0"+str(seconds)
     if break_length.total_seconds() < 900:
