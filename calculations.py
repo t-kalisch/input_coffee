@@ -4,11 +4,12 @@ import datetime
 
 #@st.cache(allow_output_mutation=True, hash_funcs={"_thread.RLock": lambda _: None})
 def init_connection():
-    return mysql.connect(**st.secrets["mysql"])
+	return mysql.connect(**st.secrets["mysql"])
 
 def db_logout():
-    db.close()
+	db.close()
 
+def get_user_data():
 	db = init_connection()
 	cursor = db.cursor(buffered=True)
 	cursor.execute("select name, password, admin from members")
