@@ -2,10 +2,20 @@ import mysql.connector as mysql
 import streamlit as st
 import datetime
 
-@st.cache
-def get_user_data():
-	user_data=[['TK', 'akstr!admin2',1],['PB','akstr!admin2',1],['NV',None,None],['DB',None,None],['FLG','baddragon',None],['SHK',None,None],['TB',None,None],['TT',None,None],['RS',None,None]]
+#@st.cache(allow_output_mutation=True, hash_funcs={"_thread.RLock": lambda _: None})
+def init_connection():
+    return mysql.connect(**st.secrets["mysql"])
+
+def db_logout():
+    db.close()
+
+	db = init_connection()
+	cursor = db.cursor(buffered=True)
+	cursor.execute("select name, password, admin from members")
+	user_data=cursor.fetchall()
+	db.close()
 	return user_data
+
 
 def check_breakstatus(now):
 	last_break_start = datetime.datetime(2022,1,29,17,25,22)
