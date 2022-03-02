@@ -82,27 +82,29 @@ if st.session_state.logged_in == True:
     if break_length.total_seconds() < 900:
         col2.markdown("A coffee break is under way since "+str(minutes)+":"+strseconds+".")
         col2.button("Update", help="Update coffee break status")
+        status="add"
         if st.session_state.admin == True:
             name = col2.text_input("Drinker", placeholder = "Username")
             submit_coffee = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.")
             if submit_coffee:
-                submit_coffee(user, name, True, "add")
+                submit_coffee(user, name, True, status)
         else:
             submit_coffee = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.")
             if submit_coffee:
-                submit_coffee(user, "", False, "add")
+                submit_coffee(user, "", False, status)
     elif break_length.total_seconds() >= 900:
+        status = "new"
         col2.markdown("No coffee break is currently under way.")
         update = col2.button("Update", help="Update coffee break status")
         if st.session_state.admin == True:
             name = col2.text_input("Drinker", placeholder = "Username")
             submit_coffee = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.")
             if submit_coffee:
-                submit_coffee(user, name, True, "new")
+                submit_coffee(user, name, True, status)
         else:
             submit_coffee = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.")
             if submit_coffee:
-                submit_coffee(user, "", False, "new")
+                submit_coffee(user, "", False, status)
 st.write(st.session_state.submit)
 st.write(st.session_state.logged_in)
 st.write(st.session_state.admin)
