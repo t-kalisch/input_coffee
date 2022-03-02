@@ -25,19 +25,19 @@ def check_breakstatus(now):
 	cursor.execute("select last_break from update_status")
 	last_break = cursor.fetchall()
 	duration = now - last_break[0][0]
-	#duration.total_seconds()
 	return duration
 
-def submit_coffee(user, name, admin):
-    active = []
-    if admin == True:
-        if name == "":
-            active.append(user)
-        else:
-            active.append(name)
-    else:
-        active.append(user)
-    active.append(1)
+
+def submit_coffee(user, name, admin, status):
+    #active = []
+    #if admin == True:
+    #    if name == "":
+    #        active.append(user)
+    #    else:
+    #        active.append(name)
+    #else:
+    #    active.append(user)
+    #active.append(1)
     #st.session_state.submit = active
     #st.write(st.session_state.submit)
     #st.write(active)
