@@ -16,6 +16,8 @@ if 'attempt' not in st.session_state:
     st.session_state.attempt=False
 if 'admin' not in st.session_state:
     st.session_state.admin=False
+if 'break' not in st.session_state:
+    st.session_state.break=None
 
 
 def check_login(user, user_pw):
