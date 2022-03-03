@@ -82,7 +82,7 @@ if st.session_state.logged_in == True:
         strseconds = "0"+str(seconds)
     if st.session_state.br_st == True:
         col2.markdown("Test markdown")
-    if break_length.total_seconds() < 900:
+    if break_length.total_seconds() < 60:
         col2.markdown("A coffee break is under way since "+str(minutes)+":"+strseconds+".")
         update = col2.button("Update", help="Update coffee break status")
         if st.session_state.admin == True:
@@ -94,7 +94,7 @@ if st.session_state.logged_in == True:
             submit_button = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.")
             if submit_button:
                 submit_coffee(user, "", "add")
-    elif break_length.total_seconds() >= 900:
+    elif break_length.total_seconds() >= 60:
         st.session_state.br_st=False
         col2.markdown("No coffee break is currently under way.")
         update = col2.button("Update", help="Update coffee break status")
