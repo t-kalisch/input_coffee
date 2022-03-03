@@ -52,16 +52,23 @@ def check_login(user, user_pw):
         st.session_state.logged_in=False
         st.session_state.attempt=True    
 
+def logout():
+        st.session_state.logged_in=False
+        st.session_state.attempt=False
+        st.session_state.admin=False
+        
 count=0
 
 col1,col2,col3 = st.columns([0.5,1,0.7])
-user = col2.text_input(label="", placeholder="Username")
-user_pw = col2.text_input(label="", type="password", placeholder="Password")
+user = col2.text_input(label="", placeholder="Username", key="username")
+user_pw = col2.text_input(label="", type="password", placeholder="Password", key="userpassword")
 col1,col2,col3,col4 = st.columns([0.5,0.6,0.4,0.7])
+
 def login_attempt():
     check_login(user, user_pw)
+    
 if st.session_state.logged_in == True:
-    logout = col2.button("Logout", help="Click here to log out", key="logout_button")
+    logout = col2.button("Logout", help="Click here to log out", key="logout_button", on_click=logout)
 else:
     login = col2.button("Login", help="Click here to log in", key="login_button", on_click=login_attempt)
     
@@ -69,14 +76,14 @@ col3.checkbox("Remember me", help="Keep me logged in")
 
 
 
-if st.session_state.logged_in == True:
-    if logout:
-        st.session_state.logged_in=False
-        st.session_state.attempt=False
-        st.session_state.admin=False
-else:
-    if login: 
-        check_login(user, user_pw)
+#if st.session_state.logged_in == True:
+#    if logout:
+#        st.session_state.logged_in=False
+#        st.session_state.attempt=False
+#        st.session_state.admin=False
+#else:
+#    if login: 
+#        check_login(user, user_pw)
             
         
 if st.session_state.logged_in == True and st.session_state.attempt == False:
