@@ -49,6 +49,7 @@ else:
 col3.checkbox("Remember me", help="Keep me logged in")
 
 
+check_breakstatus(datetime.datetime.now())
 
 if st.session_state.logged_in == True:
     if logout:
