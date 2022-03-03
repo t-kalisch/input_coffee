@@ -4,6 +4,23 @@ from calculations import *
 
 st.set_page_config(page_title="Input Coffee",page_icon="coffee",layout="wide")
 
+
+def plus_one():
+    if st.session_state["slider"] < 10:
+        st.session_state.slider += 1
+    else:
+        pass
+    return
+
+# when creating the button, assign the name of your callback
+# function to the on_click parameter
+add_one = st.button("Add one to the slider", on_click=plus_one, key="add_one")
+
+# create the slider
+slide_val = st.slider("Pick a number", 0, 10, key="slider")
+
+
+
 logged_in = False
 buf1,header2,buf2 = st.columns([0.5,1,0.7])
 header2.title("**:coffee:** Input coffee")
@@ -42,9 +59,9 @@ user = col2.text_input(label="", placeholder="Username")
 user_pw = col2.text_input(label="", type="password", placeholder="Password")
 col1,col2,col3,col4 = st.columns([0.5,0.6,0.4,0.7])
 if st.session_state.logged_in == True:
-    logout = col2.button("Logout", help="Click here to log out")
+    logout = col2.button("Logout", help="Click here to log out", key="logout_button")
 else:
-    login = col2.button("Login", help="Click here to log in")
+    login = col2.button("Login", help="Click here to log in", key="login_button")
     
 col3.checkbox("Remember me", help="Keep me logged in")
 
