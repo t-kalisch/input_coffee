@@ -67,11 +67,11 @@ col3.checkbox("Remember me", help="Keep me logged in")
 
 
 
-if st.session_state.logged_in == True:
-    if logout:
-        st.session_state.logged_in=False
-        st.session_state.attempt=False
-        st.session_state.admin=False
+#if st.session_state.logged_in == True:
+#    if logout:
+#        st.session_state.logged_in=False
+#        st.session_state.attempt=False
+#        st.session_state.admin=False
 #else:
 #    if login: 
 #        check_login(user, user_pw)
