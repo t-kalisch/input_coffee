@@ -61,7 +61,7 @@ col1,col2,col3,col4 = st.columns([0.5,0.6,0.4,0.7])
 if st.session_state.logged_in == True:
     logout = col2.button("Logout", help="Click here to log out", key="logout_button")
 else:
-    login = col2.button("Login", help="Click here to log in", key="login_button")#, on_click=check_login(user, user_pw))
+    login = col2.button("Login", help="Click here to log in", key="login_button", on_click=check_login)
     
 col3.checkbox("Remember me", help="Keep me logged in")
 
