@@ -49,7 +49,6 @@ else:
 col3.checkbox("Remember me", help="Keep me logged in")
 
 
-check_breakstatus(datetime.datetime.now())
 
 if st.session_state.logged_in == True:
     if logout:
@@ -79,6 +78,8 @@ if st.session_state.logged_in == True:
     strseconds = str(seconds)
     if seconds < 10:
         strseconds = "0"+str(seconds)
+    if st.session_state_break == True:
+        col2.markdown("Test markdown")
     if break_length.total_seconds() < 900:
         col2.markdown("A coffee break is under way since "+str(minutes)+":"+strseconds+".")
         update = col2.button("Update", help="Update coffee break status")
@@ -92,6 +93,7 @@ if st.session_state.logged_in == True:
             if submit_button:
                 submit_coffee(user, "", "add")
     elif break_length.total_seconds() >= 900:
+        st.session_state.break=False
         col2.markdown("No coffee break is currently under way.")
         update = col2.button("Update", help="Update coffee break status")
         if st.session_state.admin == True:
@@ -99,12 +101,12 @@ if st.session_state.logged_in == True:
             submit_button = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.")
             if submit_button:
                 submit_coffee(user, name, "new")
-                break_length = check_breakstatus(now)
+                st.session_state.break=True
         else:
             submit_button = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.")
             if submit_button:
                 submit_coffee(user, "", "new")
-                break_length = check_breakstatus(now)
+                st.session_state.break=True
 st.write(st.session_state.submit)
 st.write(st.session_state.logged_in)
 st.write(st.session_state.admin)
