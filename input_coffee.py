@@ -89,7 +89,7 @@ else:
     header2.markdown("Please log in to submit a coffee")
 
 
-def submit_attempt():
+
 
     
     
