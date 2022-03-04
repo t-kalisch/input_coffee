@@ -81,9 +81,9 @@ if st.session_state.logged_in == True:
     strseconds = str(seconds)
     if seconds < 10:
         strseconds = "0"+str(seconds)
-        
+    
     if break_length.total_seconds() <= 785:                                                 #average break length is 13:05.0171 aka 785 seconds
-        col2.markdown("A coffee break is under way since "+str(minutes)+":"+strseconds+". (total length: 13:05)")
+        header2.markdown("A coffee break is under way since "+str(minutes)+":"+strseconds+". (total length: 13:05)")
         update = col2.button("Update", help="Update coffee break status")
         if st.session_state.admin == True:
             name = col2.text_input("Drinker", placeholder = "Username")
