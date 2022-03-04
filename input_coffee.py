@@ -42,6 +42,7 @@ def logout():
         st.session_state.logged_in=False
         st.session_state.attempt=False
         st.session_state.admin=False
+        st.session_state.user=None
         
 count=0
 
