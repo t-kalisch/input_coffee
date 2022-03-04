@@ -45,7 +45,7 @@ def submit_coffee(user, name, status):
 			id_ext = id_ext + "0"
 		id_ext = id_ext + month_break
 		if(len(day_break)==1):            #adding "0" if day has 1 digit
-			id_ext = ied_ext + "0"
+			id_ext = id_ext + "0"
 		id_ext = id_ext + day_break
 
 		st.write(id_ext)
