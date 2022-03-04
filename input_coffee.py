@@ -12,6 +12,8 @@ if 'submit' not in st.session_state:
     st.session_state.submit = 0
 if 'logged_in' not in st.session_state:
     st.session_state.logged_in=False
+if 'user' not in st.session_state:
+    se.session_state.user=None
 if 'attempt' not in st.session_state:
     st.session_state.attempt=False
 if 'admin' not in st.session_state:
@@ -24,6 +26,7 @@ def check_login(user, user_pw):
     for i in range(len(user_data)):
         if user == user_data[i][0] and user_pw == user_data[i][1]:
             logged_in = True
+            st.session_state.user=user.upper()
             if user_data[i][2] == 1:
                 st.session_state.admin=True
     if logged_in == True:
