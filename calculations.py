@@ -39,8 +39,8 @@ def submit_coffee(user, name, status):
 		st.write("new")
 		#---------------------- creating the extended id -----------------------
 		id_ext=str(datetime.date.today().year)
-		day_break=str(datetime.date.today().month)
-		month_break=str(datetime.date.today().day)
+		day_break=str(datetime.date.today().day)
+		month_break=str(datetime.date.today().month)
 		if(len(month_break)==1):          #adding "0" if month has 1 digit
 			id_ext = id_ext + "0"
 		id_ext = id_ext + month_break
@@ -52,6 +52,7 @@ def submit_coffee(user, name, status):
 		total=0
 		cursor.execute("SELECT id_ext FROM breaks WHERE id_ext like '"+id_ext+"%'")    #searching for breaks of the same day as enterd break
 		ids=cursor.fetchall()
+		st.write(ids)
 		for i in range(len(ids)):
 			ids[i]=int(ids[i][0])
 		if len(ids)==0:
