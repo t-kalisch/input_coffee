@@ -103,7 +103,7 @@ def submit_coffee(user, name, status):
 				cursor.execute("update drinkers set coffees = '"+coffees_new+"' where id_ext = "+id_ext)
 		else:
 			cursor.execute("select n_coffees from mbr_"+name.upper()+" where id_ext = "+id_ext)
-			tmp=cursor.fetchone()
+			tmp=cursor.fetchall()[0][0]
 			if tmp == None:
 				cursor.execute("insert into mbr_"+name.upper()+" (id_ext, n_coffees) values (%s, %s)", (id_ext, coffees_mbr))
 				persons = drinkers_old[0] + "-" + name.upper()
