@@ -48,11 +48,9 @@ def submit_coffee(user, name, status):
 			id_ext = id_ext + "0"
 		id_ext = id_ext + day_break
 
-		st.write(id_ext)
 		total=0
 		cursor.execute("SELECT id_ext FROM breaks WHERE id_ext like '"+id_ext+"%'")    #searching for breaks of the same day as enterd break
 		ids=cursor.fetchall()
-		st.write(ids)
 		for i in range(len(ids)):
 			ids[i]=int(ids[i][0])
 		if len(ids)==0:
