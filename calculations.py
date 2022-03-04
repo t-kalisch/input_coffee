@@ -73,9 +73,18 @@ def submit_coffee(user, name, status):
 		st.write(id_ext)
 		if name == "":
 			cursor.execute("select n_coffees from mbr_"+user.upper()+" where id_ext = "+id_ext)
+			tmp=cursor.fetchone()
+			if tmp = None:
+				cursor.execute("insert into mbr_"+user.upper()+" (id_ext, n_coffees) values (%s, %s)", (id_ext, 1))
+			else:
+				cursor.execute("update mbr_"+user.upper()+" set n_coffees = "+str(tmp+1)+" where id_ext = "+id_ext)
 		else:
 			cursor.execute("select n_coffees from mbr_"+name.upper()+" where id_ext = "+id_ext)
-		coffees=cursor.fetchone()
+			tmp=cursor.fetchone()
+			if tmp = None:
+				cursor.execute("insert into mbr_"+name.upper()+" (id_ext, n_coffees) values (%s, %s)", (id_ext, 1))
+			else:
+				cursor.execute("update mbr_"+name.upper()+" set n_coffees = "+str(tmp+1)+" where id_ext = "+id_ext)
 		st.write(coffees)
 	db.commit()
 	db.close()
