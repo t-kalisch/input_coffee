@@ -74,7 +74,7 @@ def submit_coffee(user, name, status):
 		id_ext=cursor.fetchall()[0][0]
 		st.write(id_ext)
 		cursor.execute("select persons, coffees from drinkers where id_ext = "+id_ext)
-		drinkers_old = cursor.fetchall()
+		drinkers_old = cursor.fetchall()[0]
 		st.write(drinkers_old)
 		coffees = 1
 		if name == "":
