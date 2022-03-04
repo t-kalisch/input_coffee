@@ -95,9 +95,9 @@ def submit_coffee(user, name, status):
 				for i in range(len(persons)):
 					if user.upper() == persons[i]:
 						coffees[i] = str(int(coffees[i]) + 1)
-						coffees_new = coffees_new + str(coffees[i])
-						if i < len(persons)-1:
-							coffees_new = coffees_new + "-"
+					coffees_new = coffees_new + str(coffees[i])
+					if i < len(persons)-1:
+						coffees_new = coffees_new + "-"
 				#cursor.execute("update drinkers set persons = "+persons+" where id_ext = "+id_ext)
 				cursor.execute("update drinkers set coffees = '"+coffees_new+"' where id_ext = "+id_ext)
 		else:
@@ -119,9 +119,9 @@ def submit_coffee(user, name, status):
 				for i in range(len(persons)):
 					if name.upper() == persons[i]:
 						coffees[i] = str(int(coffees[i]) + 1)
-						coffees_new = coffees_new + str(coffees[i])
-						if i < len(persons)-1:
-							coffees_new = coffees_new + "-"
+					coffees_new = coffees_new + str(coffees[i])
+					if i < len(persons)-1:
+						coffees_new = coffees_new + "-"
 				#cursor.execute("update drinkers set persons = "+persons+" where id_ext = "+id_ext)
 				cursor.execute("update drinkers set coffees = '"+coffees_new+"' where id_ext = "+id_ext)
 		st.write(coffees)
