@@ -62,29 +62,38 @@ def submit_coffee(user, name, status):
 		cursor.execute("INSERT INTO breaks (id_ext, day, month, year) VALUES ("+id_ext+","+str(int(id_ext[6:8]))+","+str(int(id_ext[4:6]))+","+str(int(id_ext[0:4]))+")")
 		if name == "":
 			#cursor.execute("insert into mbr_"+user.upper()+" (id_ext, n_coffees) values (%s, %s)", (id_ext, 1))
+			#cursor.execute("insert into drinkers (id_ext, persons, coffees) values (%s, %s, %s)", (id_ext, user.upper(), 1))
 			pass
 		else:
 			#cursor.execute("insert into mbr_"+name.upper()+" (id_ext, n_coffees) values (%s, %s)", (id_ext, 1))
+			#cursor.execute("insert into drinkers (id_ext, persons, coffees) values (%s, %s, %s)", (id_ext, name.upper(), 1))
 			pass
 		
 	elif status == "add":
 		cursor.execute("select max(id_ext) from breaks")
 		id_ext=cursor.fetchall()[0][0]
 		st.write(id_ext)
+		cursor.execute("select (persons, coffees) from drinkers where id_ext = "+id_ext)
+		drinkers_old = cursor.fetchall()
+		st.write(drinkers_old)
+		coffees = 1
 		if name == "":
 			cursor.execute("select n_coffees from mbr_"+user.upper()+" where id_ext = "+id_ext)
 			tmp=cursor.fetchone()
 			if tmp == None:
-				#cursor.execute("insert into mbr_"+user.upper()+" (id_ext, n_coffees) values (%s, %s)", (id_ext, 1))
+				#cursor.execute("insert into mbr_"+user.upper()+" (id_ext, n_coffees) values (%s, %s)", (id_ext, coffees))
 			else:
-				#cursor.execute("update mbr_"+user.upper()+" set n_coffees = "+str(tmp+1)+" where id_ext = "+id_ext)
+				coffees = tmp+1
+				#cursor.execute("update mbr_"+user.upper()+" set n_coffees = "+str(coffees)+" where id_ext = "+id_ext)
+
 		else:
 			cursor.execute("select n_coffees from mbr_"+name.upper()+" where id_ext = "+id_ext)
 			tmp=cursor.fetchone()
 			if tmp == None:
-				#cursor.execute("insert into mbr_"+name.upper()+" (id_ext, n_coffees) values (%s, %s)", (id_ext, 1))
+				#cursor.execute("insert into mbr_"+name.upper()+" (id_ext, n_coffees) values (%s, %s)", (id_ext, coffees))
 			else:
-				#cursor.execute("update mbr_"+name.upper()+" set n_coffees = "+str(tmp+1)+" where id_ext = "+id_ext)
+				coffees = tmp+1
+				#cursor.execute("update mbr_"+name.upper()+" set n_coffees = "+str(coffees)+" where id_ext = "+id_ext)
 		st.write(coffees)
 	db.commit()
 	db.close()
