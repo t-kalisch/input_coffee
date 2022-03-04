@@ -72,14 +72,15 @@ def submit_coffee(user, name, status):
 	elif status == "add":
 		cursor.execute("select max(id_ext) from breaks")
 		id_ext=cursor.fetchall()[0][0]
-		st.write(id_ext)
+		
 		cursor.execute("select persons, coffees from drinkers where id_ext = "+id_ext)
 		drinkers_old = cursor.fetchall()[0]
 		st.write(drinkers_old)
 		coffees = 1
 		if name == "":
 			cursor.execute("select n_coffees from mbr_"+user.upper()+" where id_ext = "+id_ext)
-			tmp=cursor.fetchall()[0][0]
+			tmp=cursor.fetchall()
+			st.write(tmp)
 			if tmp == None:
 				cursor.execute("insert into mbr_"+user.upper()+" (id_ext, n_coffees) values (%s, %s)", (id_ext, coffees))
 				persons = drinkers_old[0] + "-" + user.upper()
