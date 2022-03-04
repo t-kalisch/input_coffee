@@ -61,7 +61,7 @@ col3.checkbox("Remember me", help="Keep me logged in")
             
         
 if st.session_state.logged_in == True and st.session_state.attempt == False:
-    header2.markdown("Logged in as "+user)
+    header2.markdown("Logged in as "+st.session_state.user)
 else:
     header2.markdown("Please log in to submit a coffee")
 
@@ -100,10 +100,5 @@ if st.session_state.logged_in == True:
             submit_button = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click=submit_coffee, args=(st.session_state.user, "", "new"))
             
             
-st.write(st.session_state.submit)
-st.write(st.session_state.logged_in)
-st.write(st.session_state.user)
-st.write(st.session_state.admin)
-st.write(st.session_state.attempt)
 
 
