@@ -33,11 +33,8 @@ def check_breakstatus(now):
 def submit_coffee(user, name, status):
 	db = init_connection()
 	cursor = db.cursor(buffered=True)
-	st.write("User: "+user)
-	st.write("Name; "+name)
 	if status == "new":
 		cursor.execute("update update_status set last_break = current_timestamp()")
-		st.write("new")
 		#---------------------- creating the extended id -----------------------
 		id_ext=str(datetime.date.today().year)
 		day_break=str(datetime.date.today().day)
@@ -58,7 +55,6 @@ def submit_coffee(user, name, status):
 			id_ext=id_ext+"01"
 		else:
 			id_ext=str(max(ids)+1)
-		st.write(id_ext)
 		cursor.execute("INSERT INTO breaks (id_ext, day, month, year) VALUES ("+id_ext+","+str(int(id_ext[6:8]))+","+str(int(id_ext[4:6]))+","+str(int(id_ext[0:4]))+")")
 		if name == "":
 			cursor.execute("insert into mbr_"+user.upper()+" (id_ext, n_coffees) values (%s, %s)", (id_ext, 1))
@@ -73,7 +69,6 @@ def submit_coffee(user, name, status):
 		
 		cursor.execute("select persons, coffees from drinkers where id_ext = "+id_ext)
 		drinkers_old = cursor.fetchall()[0]
-		st.write(drinkers_old)
 		if name == "":
 			cursor.execute("select count(n_coffees) from mbr_"+user.upper()+" where id_ext = "+id_ext)
 			tmp=cursor.fetchall()[0][0]
@@ -91,7 +86,6 @@ def submit_coffee(user, name, status):
 				persons = drinkers_old[0].split("-")
 				coffees = drinkers_old[1].split("-")
 				coffees_new = ""
-				st.write(persons)
 				for i in range(len(persons)):
 					if user.upper() == persons[i]:
 						coffees[i] = str(int(coffees[i]) + 1)
@@ -124,7 +118,6 @@ def submit_coffee(user, name, status):
 						coffees_new = coffees_new + "-"
 				#cursor.execute("update drinkers set persons = "+persons+" where id_ext = "+id_ext)
 				cursor.execute("update drinkers set coffees = '"+coffees_new+"' where id_ext = "+id_ext)
-		st.write(coffees)
 	db.commit()
 	db.close()
 	return
