@@ -94,7 +94,7 @@ def submit_coffee(user, name, status):
 				coffees = drinkers_old[1].split("-")
 				for i in range(len(persons)):
 					if user.upper() == persons[i]:
-						coffees[i] = coffees[i] + 1
+						coffees[i] = str(int(coffees[i]) + 1)
 				cursor.execute("update drinkers set persons = "+persons+" where id_ext = "+id_ext)
 				cursor.execute("update drinkers set coffees = "+coffees+" where id_ext = "+id_ext)
 		else:
