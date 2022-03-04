@@ -78,10 +78,10 @@ def submit_coffee(user, name, status):
 		st.write(drinkers_old)
 		coffees_mbr = 1
 		if name == "":
-			cursor.execute("select n_coffees from mbr_"+user.upper()+" where id_ext = "+id_ext)
+			cursor.execute("select count(n_coffees) from mbr_"+user.upper()+" where id_ext = "+id_ext)
 			tmp=cursor.fetchall()[0][0]
 			st.write(tmp)
-			if tmp == None:
+			if tmp == 0:
 				cursor.execute("insert into mbr_"+user.upper()+" (id_ext, n_coffees) values (%s, %s)", (id_ext, coffees_mbr))
 				persons = drinkers_old[0] + "-" + user.upper()
 				coffees = drinkers_old[1] + "-" + str(coffees_mbr)
@@ -102,9 +102,9 @@ def submit_coffee(user, name, status):
 				#cursor.execute("update drinkers set persons = "+persons+" where id_ext = "+id_ext)
 				cursor.execute("update drinkers set coffees = '"+coffees_new+"' where id_ext = "+id_ext)
 		else:
-			cursor.execute("select n_coffees from mbr_"+name.upper()+" where id_ext = "+id_ext)
+			cursor.execute("select count(n_coffees) from mbr_"+name.upper()+" where id_ext = "+id_ext)
 			tmp=cursor.fetchall()[0][0]
-			if tmp == None:
+			if tmp == 0:
 				cursor.execute("insert into mbr_"+name.upper()+" (id_ext, n_coffees) values (%s, %s)", (id_ext, coffees_mbr))
 				persons = drinkers_old[0] + "-" + name.upper()
 				coffees = drinkers_old[1] + "-" + str(coffees_mbr)
