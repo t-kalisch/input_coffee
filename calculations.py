@@ -30,7 +30,7 @@ def check_breakstatus(now):
 	return duration
 
 
-def submit_coffee(user, name, status):
+def submit_coffee(name, status):
 	db = init_connection()
 	cursor = db.cursor(buffered=True)
 	
@@ -58,14 +58,16 @@ def submit_coffee(user, name, status):
 		else:
 			id_ext=str(max(ids)+1)
 		st.write(id_ext)
-		cursor.execute("INSERT INTO breaks (id_ext, day, month, year) VALUES ("+id_ext+","+str(int(id_ext[6:8]))+","+str(int(id_ext[4:6]))+","+str(int(id_ext[0:4]))+")")
+		#cursor.execute("INSERT INTO breaks (id_ext, day, month, year) VALUES ("+id_ext+","+str(int(id_ext[6:8]))+","+str(int(id_ext[4:6]))+","+str(int(id_ext[0:4]))+")")
+		#cursor.execute("insert into mbr_"+name.upper()+" (id_ext, n_coffees) values (%s, %s)", (id_ext, 1))
 		
 	elif status == "add":
 		cursor.execute("select max(id_ext) from breaks")
 		id_ext=cursor.fetchall()
 		st.write(id_ext)
-		cursor.execute("select n_coffees from mbr_"+user.upper()+" where id_ext = "+id_ext[0][0])
-		st.write("add")
+		cursor.execute("select n_coffees from mbr_"+name.upper()+" where id_ext = "+id_ext[0][0])
+		coffees=cursor.fetchone()
+		st.write(coffees)
 	db.commit()
 	db.close()
 	return
