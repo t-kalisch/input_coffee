@@ -37,6 +37,29 @@ def submit_coffee(user, name, status):
 	if status == "new":
 		cursor.execute("update update_status set last_break = current_timestamp()")
 		st.write("new")
+		#---------------------- creating the extended id -----------------------
+		id_ext=str(datetime.date.today().year)
+		day_break=str(datetime.date.today().month)
+		month_break=str(datetime.date.today().day)
+		if(len(month_break)==1):          #adding "0" if month has 1 digit
+			id_ext = id_ext + "0"
+		id_ext = id_ext + month_break
+		if(len(day_break)==1):            #adding "0" if day has 1 digit
+			id_ext = ied_ext + "0"
+		id_ext = id_ext + day_break
+
+		st.write(id_ext)
+		total=0
+		cursor.execute("SELECT id_ext FROM breaks WHERE id_ext like '"+id_ext+"%'")    #searching for breaks of the same day as enterd break
+		ids=cursor.fetchall()
+		for i in range(len(ids)):
+			ids[i]=int(ids[i][0])
+		if len(ids)==0:
+			id_ext=id_ext+"01"
+		else:
+			id_ext=str(max(ids)+1)
+		st.write(id_ext)
+			
 	elif status == "add":
 		cursor.execute("select max(id_ext) from breaks")
 		id_ext=cursor.fetchall()
