@@ -84,8 +84,8 @@ def submit_coffee(user, name, status):
 				cursor.execute("insert into mbr_"+user.upper()+" (id_ext, n_coffees) values (%s, %s)", (id_ext, coffees))
 				persons = drinkers_old[0] + "-" + user.upper()
 				coffees = drinkers_old[1] + "-" + coffees
-				cursor.execute("update drinkers set persons = "+persons"+ where id_ext = "+id_ext)
-				cursor.execute("update drinkers set coffees = "+coffees"+ where id_ext = "+id_ext)
+				cursor.execute("update drinkers set persons = "+persons+" where id_ext = "+id_ext)
+				cursor.execute("update drinkers set coffees = "+coffees+" where id_ext = "+id_ext)
 			else:
 				coffees = tmp+1
 				cursor.execute("update mbr_"+user.upper()+" set n_coffees = "+str(coffees)+" where id_ext = "+id_ext)
@@ -94,8 +94,8 @@ def submit_coffee(user, name, status):
 				for i in range(len(persons)):
 					if user.upper() == persons[i]:
 						coffees[i] = coffees[i] + 1
-				cursor.execute("update drinkers set persons = "+persons"+ where id_ext = "+id_ext)
-				cursor.execute("update drinkers set coffees = "+coffees"+ where id_ext = "+id_ext)
+				cursor.execute("update drinkers set persons = "+persons+" where id_ext = "+id_ext)
+				cursor.execute("update drinkers set coffees = "+coffees+" where id_ext = "+id_ext)
 		else:
 			cursor.execute("select n_coffees from mbr_"+name.upper()+" where id_ext = "+id_ext)
 			tmp=cursor.fetchone()
@@ -103,8 +103,8 @@ def submit_coffee(user, name, status):
 				cursor.execute("insert into mbr_"+name.upper()+" (id_ext, n_coffees) values (%s, %s)", (id_ext, coffees))
 				persons = drinkers_old[0] + "-" + name.upper()
 				coffees = drinkers_old[1] + "-" + coffees
-				cursor.execute("update drinkers set persons = "+persons"+ where id_ext = "+id_ext)
-				cursor.execute("update drinkers set coffees = "+coffees"+ where id_ext = "+id_ext)
+				cursor.execute("update drinkers set persons = "+persons+" where id_ext = "+id_ext)
+				cursor.execute("update drinkers set coffees = "+coffees+" where id_ext = "+id_ext)
 			else:
 				coffees = tmp+1
 				cursor.execute("update mbr_"+name.upper()+" set n_coffees = "+str(coffees)+" where id_ext = "+id_ext)
@@ -113,8 +113,8 @@ def submit_coffee(user, name, status):
 				for i in range(len(persons)):
 					if user.upper() == persons[i]:
 						coffees[i] = coffees[i] + 1
-				cursor.execute("update drinkers set persons = "+persons"+ where id_ext = "+id_ext)
-				cursor.execute("update drinkers set coffees = "+coffees"+ where id_ext = "+id_ext)
+				cursor.execute("update drinkers set persons = "+persons+" where id_ext = "+id_ext)
+				cursor.execute("update drinkers set coffees = "+coffees+" where id_ext = "+id_ext)
 		st.write(coffees)
 	db.commit()
 	db.close()
