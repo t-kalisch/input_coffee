@@ -79,7 +79,7 @@ def submit_coffee(user, name, status):
 		coffees = 1
 		if name == "":
 			cursor.execute("select n_coffees from mbr_"+user.upper()+" where id_ext = "+id_ext)
-			tmp=cursor.fetchall()
+			tmp=cursor.fetchall()[0][0]
 			st.write(tmp)
 			if tmp == None:
 				cursor.execute("insert into mbr_"+user.upper()+" (id_ext, n_coffees) values (%s, %s)", (id_ext, coffees))
