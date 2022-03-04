@@ -82,6 +82,7 @@ def submit_coffee(user, name, status):
 			tmp=cursor.fetchone()
 			if tmp == None:
 				#cursor.execute("insert into mbr_"+user.upper()+" (id_ext, n_coffees) values (%s, %s)", (id_ext, coffees))
+				pass
 			else:
 				coffees = tmp+1
 				#cursor.execute("update mbr_"+user.upper()+" set n_coffees = "+str(coffees)+" where id_ext = "+id_ext)
@@ -91,6 +92,7 @@ def submit_coffee(user, name, status):
 			tmp=cursor.fetchone()
 			if tmp == None:
 				#cursor.execute("insert into mbr_"+name.upper()+" (id_ext, n_coffees) values (%s, %s)", (id_ext, coffees))
+				pass
 			else:
 				coffees = tmp+1
 				#cursor.execute("update mbr_"+name.upper()+" set n_coffees = "+str(coffees)+" where id_ext = "+id_ext)
