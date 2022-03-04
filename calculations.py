@@ -58,7 +58,11 @@ def submit_coffee(user, name, status):
 		else:
 			id_ext=str(max(ids)+1)
 		st.write(id_ext)
-			
+		st.write(id_ext[0:4])
+		st.write(id_ext[4:6])
+		st.write(id_ext[6:8])
+		#cursor.execute("INSERT INTO breaks (id_ext, day, month, year) VALUES ("+id_ext+","+str(date_break[0])+","+str(date_break[1])+","+str(date_break[2])+")")
+		
 	elif status == "add":
 		cursor.execute("select max(id_ext) from breaks")
 		id_ext=cursor.fetchall()
