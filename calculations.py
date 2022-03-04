@@ -117,7 +117,7 @@ def submit_coffee(user, name, status):
 				coffees = drinkers_old[1].split("-")
 				coffees_new = ""
 				for i in range(len(persons)):
-					if user.upper() == persons[i]:
+					if name.upper() == persons[i]:
 						coffees[i] = str(int(coffees[i]) + 1)
 						coffees_new = coffees_new + str(coffees[i])
 						if i < len(persons)-1:
