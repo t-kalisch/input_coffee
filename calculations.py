@@ -33,8 +33,8 @@ def check_breakstatus(now):
 def submit_coffee(user, name, status):
 	db = init_connection()
 	cursor = db.cursor(buffered=True)
-	st.write(user)
-	st.write(name)
+	st.write("User: "+user)
+	st.write("Name; "+name)
 	if status == "new":
 		cursor.execute("update update_status set last_break = current_timestamp()")
 		st.write("new")
