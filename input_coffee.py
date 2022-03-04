@@ -13,7 +13,7 @@ if 'submit' not in st.session_state:
 if 'logged_in' not in st.session_state:
     st.session_state.logged_in=False
 if 'user' not in st.session_state:
-    se.session_state.user=None
+    st.session_state.user=None
 if 'attempt' not in st.session_state:
     st.session_state.attempt=False
 if 'admin' not in st.session_state:
