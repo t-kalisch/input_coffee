@@ -90,8 +90,8 @@ def submit_coffee(user, name, status):
 			else:
 				coffees = tmp+1
 				cursor.execute("update mbr_"+user.upper()+" set n_coffees = "+str(coffees)+" where id_ext = "+id_ext)
-				persons = drinkers_old.split("-")
-				coffees = drinkers_old.split("-")
+				persons = drinkers_old[0].split("-")
+				coffees = drinkers_old[1].split("-")
 				for i in range(len(persons)):
 					if user.upper() == persons[i]:
 						coffees[i] = coffees[i] + 1
