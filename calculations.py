@@ -80,7 +80,7 @@ def submit_coffee(user, name, status):
 		if name == "":
 			cursor.execute("select count(n_coffees) from mbr_"+user.upper()+" where id_ext = "+id_ext)
 			tmp=cursor.fetchall()[0][0]
-			st.write(tmp)
+			
 			if tmp == 0:
 				cursor.execute("insert into mbr_"+user.upper()+" (id_ext, n_coffees) values (%s, %s)", (id_ext, coffees_mbr))
 				persons = drinkers_old[0] + "-" + user.upper()
@@ -93,6 +93,7 @@ def submit_coffee(user, name, status):
 				persons = drinkers_old[0].split("-")
 				coffees = drinkers_old[1].split("-")
 				coffees_new = ""
+				st.write(persons)
 				for i in range(len(persons)):
 					if user.upper() == persons[i]:
 						coffees[i] = str(int(coffees[i]) + 1)
