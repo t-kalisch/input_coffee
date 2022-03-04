@@ -87,21 +87,22 @@ if st.session_state.logged_in == True:
         update = col2.button("Update", help="Update coffee break status")
         if st.session_state.admin == True:
             name = col2.text_input("Drinker", placeholder = "Username")
-            submit_button = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.", on_click=submit_coffee, args=(user, name, "add"))
+            submit_button = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.", on_click=submit_coffee, args=(st.session_state.user, name, "add"))
         else:
-            submit_button = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.", on_click=submit_coffee, args=(user, "", "add"))
+            submit_button = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.", on_click=submit_coffee, args=(st.session_state.user, "", "add"))
     elif break_length.total_seconds() >= 20:
         col2.markdown("No coffee break is currently under way.")
         update = col2.button("Update", help="Update coffee break status")
         if st.session_state.admin == True:
             name = col2.text_input("Drinker", placeholder = "Username")
-            submit_button = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click=submit_coffee, args=(user, name, "new"))
+            submit_button = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click=submit_coffee, args=(st.session_state.user, name, "new"))
         else:
-            submit_button = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click=submit_coffee, args=(user, "", "new"))
+            submit_button = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click=submit_coffee, args=(st.session_state.user, "", "new"))
             
             
 st.write(st.session_state.submit)
 st.write(st.session_state.logged_in)
+st.write(st.session_state.user)
 st.write(st.session_state.admin)
 st.write(st.session_state.attempt)
 
