@@ -56,7 +56,7 @@ def submit_coffee(user, name, status):
 		else:
 			id_ext=str(max(ids)+1)
 		cursor.execute("INSERT INTO breaks (id_ext, day, month, year) VALUES ("+id_ext+","+str(int(id_ext[6:8]))+","+str(int(id_ext[4:6]))+","+str(int(id_ext[0:4]))+")")
-		cursor.execute("insert into break_size (id_ext, size) values ("+id_ext+", 1)")
+		cursor.execute("insert into break_sizes (id_ext, size) values ("+id_ext+", 1)")
 		if name == "":
 			cursor.execute("insert into mbr_"+user.upper()+" (id_ext, n_coffees) values (%s, %s)", (id_ext, 1))
 			cursor.execute("insert into drinkers (id_ext, persons, coffees) values (%s, %s, %s)", (id_ext, user.upper(), 1))
