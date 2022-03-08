@@ -82,7 +82,7 @@ def submit_coffee(user, name, status):
 				cursor.execute("update drinkers set coffees = '"+coffees+"' where id_ext = "+id_ext)
 				cursor.execute("select size from break_sizes where id_ext = "+id_ext)
 				size=cursor.fetchall()
-				cursor.execute("update break_size set size = "+str(size[0][0]+1)+" where id_ext = "+id_ext)
+				cursor.execute("update break_sizes set size = "+str(size[0][0]+1)+" where id_ext = "+id_ext)
 			else:
 				cursor.execute("select n_coffees from mbr_"+user.upper()+" where id_ext = "+id_ext)
 				coffees_mbr = cursor.fetchall()[0][0]+1
@@ -107,6 +107,9 @@ def submit_coffee(user, name, status):
 				coffees = drinkers_old[1] + "-1"
 				cursor.execute("update drinkers set persons = '"+persons+"' where id_ext = "+id_ext)
 				cursor.execute("update drinkers set coffees = '"+coffees+"' where id_ext = "+id_ext)
+				cursor.execute("select size from break_sizes where id_ext = "+id_ext)
+				size=cursor.fetchall()
+				cursor.execute("update break_sizes set size = "+str(size[0][0]+1)+" where id_ext = "+id_ext)
 			else:
 				cursor.execute("select n_coffees from mbr_"+name.upper()+" where id_ext = "+id_ext)
 				coffees_mbr = cursor.fetchall()[0][0]+1
