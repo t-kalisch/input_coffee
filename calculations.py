@@ -127,7 +127,6 @@ def submit_coffee(user, name, status):
 						coffees_new = coffees_new + "-"
 				#cursor.execute("update drinkers set persons = "+persons+" where id_ext = "+id_ext)
 				cursor.execute("update drinkers set coffees = '"+coffees_new+"' where id_ext = "+id_ext)
-		cursor.execute("select n_coffees from mbr_"+name"+where
 		st.success("Your "+coffees_mbr+". coffee for this break has been saved!")
 	db.commit()
 	db.close()
