@@ -63,6 +63,7 @@ def submit_coffee(user, name, status):
 		else:
 			cursor.execute("insert into mbr_"+name.upper()+" (id_ext, n_coffees) values (%s, %s)", (id_ext, 1))
 			cursor.execute("insert into drinkers (id_ext, persons, coffees) values (%s, %s, %s)", (id_ext, name.upper(), 1))
+		st.success("Your 1. coffee for this break has been saved!")
 		
 	elif status == "add":
 		cursor.execute("select max(id_ext) from breaks")
@@ -127,7 +128,7 @@ def submit_coffee(user, name, status):
 						coffees_new = coffees_new + "-"
 				#cursor.execute("update drinkers set persons = "+persons+" where id_ext = "+id_ext)
 				cursor.execute("update drinkers set coffees = '"+coffees_new+"' where id_ext = "+id_ext)
-		st.success("Your "+coffees_mbr+". coffee for this break has been saved!")
+		st.success("Your "+str(coffees_mbr)+". coffee for this break has been saved!")
 	db.commit()
 	db.close()
 	return
