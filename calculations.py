@@ -143,7 +143,7 @@ def delete_coffee(name, test):
 	id_ext = tmp[0][0]
 	persons = tmp[0][1].split("-")
 	coffees = tmp[0][2].split("-")
-	persons_new=[]
+	st.write(persons)
 	for i in range(len(persons)):
 		if persons[i] == name.upper():
 			coffees[i] = int(coffees[i]) - 1
