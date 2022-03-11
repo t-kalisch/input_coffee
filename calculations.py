@@ -153,16 +153,20 @@ def delete_coffee(name, test):
 			coffees.pop(i)
 	persons_new = ""
 	coffees_new = ""
-	for i in range(len(persons)):
-		if i == 0:
-			persons_new += persons[i]
-			coffees_new += str(coffees[i])
-		else:
-			persons_new = persons_new + "-" + persons[i]
-			coffees_new = coffees_new + "-" + str(coffees[i])
-	st.write(persons_new)
-	st.write(coffees_new)
-	#cursor.execute("update drinkers set persons = persons_new where id_ext = '"+id_ext+"'")
-	#cursor.execute("update drinkers set coffees = coffees_new where id_ext = '"+id_ext+"'")
+	if len(persons) == 0:
+		cursor.execute("DELETE FROM breaks WHERE id_ext='"+id_ext+"'")
+		cursor.execute("update update_status set last_break = timestamp(subdate(current_date, 1))")
+	else:
+		for i in range(len(persons)):
+			if i == 0:
+				persons_new += persons[i]
+				coffees_new += str(coffees[i])
+			else:
+				persons_new = persons_new + "-" + persons[i]
+				coffees_new = coffees_new + "-" + str(coffees[i])
+		st.write(persons_new)
+		st.write(coffees_new)
+		cursor.execute("update drinkers set persons = persons_new where id_ext = '"+id_ext+"'")
+		cursor.execute("update drinkers set coffees = coffees_new where id_ext = '"+id_ext+"'")
 	db.commit()
 	db.close()
