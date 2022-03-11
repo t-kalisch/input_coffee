@@ -146,7 +146,7 @@ def delete_coffee(name, test):
 	for i in range(len(persons)):
 		if persons[i] == name.upper():
 			st.write("True")
-			coffees[i] -= 1
+			coffees[i] = int(coffees[i]) - 1
 		if coffees[i] == 0:
 			persons.pop(i)
 			coffees.pop(i)
