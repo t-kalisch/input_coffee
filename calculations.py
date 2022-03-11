@@ -151,9 +151,9 @@ def delete_coffee(name, test):
 			cursor.execute("update mbr_"+name.upper()+" set n_coffees = "+str(coffees[i])+" where id_ext = '"+id_ext+"'")
 		if coffees[i] == 0:
 			cursor.execute("delete from mbr_"+name.upper()+" where id_ext = '"+id_ext+"'")
-			persons.pop(i)
-			coffees.pop(i)
-			i += 1					#because loop has to count one time less
+			#persons.pop(i)
+			#coffees.pop(i)
+			#i += 1					#because loop has to count one time less
 	persons_new = ""
 	coffees_new = ""
 	if len(persons) == 0:
@@ -161,12 +161,15 @@ def delete_coffee(name, test):
 		cursor.execute("update update_status set last_break = timestamp(subdate(current_date, 1))")
 	else:
 		for i in range(len(persons)):
-			if i == 0:
-				persons_new += persons[i]
-				coffees_new += str(coffees[i])
+			if coffees[i] == 0:
+				pass
 			else:
-				persons_new = persons_new + "-" + persons[i]
-				coffees_new = coffees_new + "-" + str(coffees[i])
+				if persons_new == "":
+					persons_new += persons[i]
+					coffees_new += str(coffees[i])
+				else:
+					persons_new = persons_new + "-" + persons[i]
+					coffees_new = coffees_new + "-" + str(coffees[i])
 		st.write(persons_new)
 		st.write(coffees_new)
 		cursor.execute("update drinkers set persons = '"+persons_new+"' where id_ext = '"+id_ext+"'")
