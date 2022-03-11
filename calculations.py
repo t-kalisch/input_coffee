@@ -149,7 +149,7 @@ def delete_coffee(name, test):
 			if int(coffees[i]) > 0:
 				coffees[i] = int(coffees[i]) - 1
 				cursor.execute("update mbr_"+name.upper()+" set n_coffees = "+str(coffees[i])+" where id_ext = '"+id_ext+"'")
-				st.success("A coffee for "+persons[i]+" has been deleted. They now have "+str(coffees[i])+" in the current break.")
+				st.success("A coffee for "+persons[i]+" has been deleted. They now have "+str(coffees[i])+" coffees in the current break.")
 		if coffees[i] == 0:
 			cursor.execute("delete from mbr_"+name.upper()+" where id_ext = '"+id_ext+"'")
 
