@@ -142,6 +142,7 @@ def delete_coffee(name, test):
 	tmp=cursor.fetchall()
 	persons = tmp[0].split("-")
 	coffees = tmp[1].split("-")
-	
+	st.write(persons)
+	st.write(coffees)
 	db.commit()
 	db.close()
