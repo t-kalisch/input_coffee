@@ -155,6 +155,6 @@ def delete_coffee(name, test):
 	st.write(id_ext)
 	st.write(persons)
 	st.write(coffees)
-	cursor.execute("
+	#cursor.execute("
 	db.commit()
 	db.close()
