@@ -143,7 +143,6 @@ def delete_coffee(name, test):
 	id_ext = tmp[0][0]
 	persons = tmp[0][1].split("-")
 	coffees = tmp[0][2].split("-")
-	st.write(persons)
 
 	for i in range(len(persons)):
 		if persons[i] == name.upper():
@@ -166,8 +165,6 @@ def delete_coffee(name, test):
 			else:
 				persons_new = persons_new + "-" + persons[i]
 				coffees_new = coffees_new + "-" + str(coffees[i])
-	st.write(persons_new)
-	st.write(coffees_new)
 	if persons_new == "":
 		cursor.execute("DELETE FROM breaks WHERE id_ext='"+id_ext+"'")
 		cursor.execute("update update_status set last_break = timestamp(subdate(current_date, 1))")
