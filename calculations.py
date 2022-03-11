@@ -147,7 +147,7 @@ def delete_coffee(name, test):
 		if persons[i] == name.upper():
 			st.write("True")
 			coffees[i] -= 1
-		if coffees[i] = 0:
+		if coffees[i] == 0:
 			persons.pop(i)
 			coffees.pop(i)
 	st.write(persons)
