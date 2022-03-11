@@ -146,7 +146,7 @@ def delete_coffee(name, test):
 
 	for i in range(len(persons)):
 		if persons[i] == name.upper():
-			if coffees[i] > 0:
+			if int(coffees[i]) > 0:
 				coffees[i] = int(coffees[i]) - 1
 				cursor.execute("update mbr_"+name.upper()+" set n_coffees = "+str(coffees[i])+" where id_ext = '"+id_ext+"'")
 				st.success("A coffee for "+persons[i]+" has been deleted. They now have "+str(coffees[i])+" in the current break.")
