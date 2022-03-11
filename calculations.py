@@ -144,6 +144,7 @@ def delete_coffee(name, test):
 	persons = tmp[0][1].split("-")
 	coffees = tmp[0][2].split("-")
 	st.write(persons)
+
 	for i in range(len(persons)):
 		if persons[i] == name.upper():
 			coffees[i] = int(coffees[i]) - 1
@@ -152,6 +153,7 @@ def delete_coffee(name, test):
 			cursor.execute("delete from mbr_"+name.upper()+" where id_ext = '"+id_ext+"'")
 			persons.pop(i)
 			coffees.pop(i)
+			i += 1					#because loop has to count one time less
 	persons_new = ""
 	coffees_new = ""
 	if len(persons) == 0:
