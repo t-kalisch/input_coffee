@@ -90,6 +90,9 @@ if st.session_state.logged_in == True:
         if st.session_state.admin == True:
             name = col2.text_input("Drinker", placeholder = "Username")
             submit_button = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.", on_click=submit_coffee, args=(st.session_state.user, name, "add"))
+            col2.write("-" * 34)
+            del_person = col2.text_input("Delete coffee for person", placeholder = "username")
+            del_coffee = col2.button("Delete coffee from break", on_click=delete_coffee, args=(del_person))
         else:
             submit_button = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.", on_click=submit_coffee, args=(st.session_state.user, "", "add"))
     elif break_length.total_seconds() > 785:                                                #average break length is 13:05.0171 aka 785 seconds
@@ -100,7 +103,6 @@ if st.session_state.logged_in == True:
             submit_button = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click=submit_coffee, args=(st.session_state.user, name, "new"))
         else:
             submit_button = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click=submit_coffee, args=(st.session_state.user, "", "new"))
-            
             
 
 
