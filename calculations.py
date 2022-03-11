@@ -138,19 +138,23 @@ def delete_coffee(name, test):
 	db = init_connection()
 	cursor = db.cursor(buffered=True)
 	
-	cursor.execute("select persons, coffees from drinkers ORDER BY id DESC LIMIT 1")
+	cursor.execute("select id_ext, persons, coffees from drinkers ORDER BY id DESC LIMIT 1")
 	tmp=cursor.fetchall()
-	persons = tmp[0][0].split("-")
-	coffees = tmp[0][1].split("-")
+	id_ext = tmp[0][0]
+	persons = tmp[0][1].split("-")
+	coffees = tmp[0][2].split("-")
 	persons_new=[]
 	for i in range(len(persons)):
 		if persons[i] == name.upper():
 			st.write("True")
 			coffees[i] = int(coffees[i]) - 1
+			#cursor.execute("update mbr_"+name.upper()+" set n_coffees = "+coffees[i]+" where id_ext = '"+id_ext+"'")
 		if coffees[i] == 0:
 			persons.pop(i)
 			coffees.pop(i)
+	st.write(id_ext)
 	st.write(persons)
 	st.write(coffees)
+	cursor.execute("
 	db.commit()
 	db.close()
