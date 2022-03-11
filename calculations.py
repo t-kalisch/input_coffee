@@ -132,3 +132,15 @@ def submit_coffee(user, name, status):
 	db.commit()
 	db.close()
 	return
+
+
+def delete_coffee(name):
+	db = init_connection()
+	cursor = db.cursor(buffered=True)
+	
+	cursor.execute("select persons, coffees from drinkers where max(id_ext)")
+	tmp=cursor.fetchall()
+	st.write(tmp)
+	
+	db.commit()
+	db.close()
