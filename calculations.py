@@ -138,7 +138,7 @@ def delete_coffee(name, test):
 	db = init_connection()
 	cursor = db.cursor(buffered=True)
 	
-	cursor.execute("select persons, coffees from drinkers where max(id_ext)")
+	cursor.execute("select persons, coffees from drinkers where max(id)")
 	tmp=cursor.fetchall()
 	st.write(tmp)
 	
