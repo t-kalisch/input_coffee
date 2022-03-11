@@ -156,9 +156,6 @@ def delete_coffee(name, test):
 			#i += 1					#because loop has to count one time less
 	persons_new = ""
 	coffees_new = ""
-	if len(persons) == 0:
-		cursor.execute("DELETE FROM breaks WHERE id_ext='"+id_ext+"'")
-		cursor.execute("update update_status set last_break = timestamp(subdate(current_date, 1))")
 	else:
 		for i in range(len(persons)):
 			if coffees[i] == 0:
@@ -172,7 +169,11 @@ def delete_coffee(name, test):
 					coffees_new = coffees_new + "-" + str(coffees[i])
 		st.write(persons_new)
 		st.write(coffees_new)
-		cursor.execute("update drinkers set persons = '"+persons_new+"' where id_ext = '"+id_ext+"'")
-		cursor.execute("update drinkers set coffees = '"+coffees_new+"' where id_ext = '"+id_ext+"'")
+		if persons_new == "":
+			cursor.execute("DELETE FROM breaks WHERE id_ext='"+id_ext+"'")
+			cursor.execute("update update_status set last_break = timestamp(subdate(current_date, 1))")
+		else:
+			cursor.execute("update drinkers set persons = '"+persons_new+"' where id_ext = '"+id_ext+"'")
+			cursor.execute("update drinkers set coffees = '"+coffees_new+"' where id_ext = '"+id_ext+"'")
 	db.commit()
 	db.close()
