@@ -134,7 +134,7 @@ def submit_coffee(user, name, status):
 	return
 
 
-def delete_coffee(name):
+def delete_coffee(name, test):
 	db = init_connection()
 	cursor = db.cursor(buffered=True)
 	
