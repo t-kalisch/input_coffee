@@ -140,8 +140,8 @@ def delete_coffee(name, test):
 	
 	cursor.execute("select persons, coffees from drinkers ORDER BY id DESC LIMIT 1")
 	tmp=cursor.fetchall()
-	persons = tmp[0].split("-")
-	coffees = tmp[1].split("-")
+	persons = list(tmp[0]).split("-")
+	coffees = list(tmp[1]).split("-")
 	st.write(persons)
 	st.write(coffees)
 	db.commit()
