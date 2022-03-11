@@ -138,7 +138,7 @@ def delete_coffee(name, test):
 	db = init_connection()
 	cursor = db.cursor(buffered=True)
 	
-	cursor.execute("select persons, coffees from drinkers where max(id)")
+	cursor.execute("select persons, coffees from drinkers ORDER BY id DESC LIMIT 1")
 	tmp=cursor.fetchall()
 	st.write(tmp)
 	
