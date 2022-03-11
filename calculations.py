@@ -147,13 +147,22 @@ def delete_coffee(name, test):
 	for i in range(len(persons)):
 		if persons[i] == name.upper():
 			coffees[i] = int(coffees[i]) - 1
-			cursor.execute("update mbr_"+name.upper()+" set n_coffees = "+coffees[i]+" where id_ext = '"+id_ext+"'")
+			cursor.execute("update mbr_"+name.upper()+" set n_coffees = "+str(coffees[i])+" where id_ext = '"+id_ext+"'")
 		if coffees[i] == 0:
 			persons.pop(i)
 			coffees.pop(i)
-	st.write(id_ext)
-	st.write(persons)
-	st.write(coffees)
-	#cursor.execute("
+	persons_new = ""
+	coffees_new = ""
+	for i in range(len(persons)):
+		if i == 0:
+			persons_new += persons[i]
+			coffees_new += str(coffees[i])
+		else:
+			persons_new = persons_new + "-" + persons[i]
+			coffees_new = coffees_new + "-" + str(coffees[i])
+	st.write(persons_new)
+	st.write(coffees_new)
+	#cursor.execute("update drinkers set persons = persons_new where id_ext = '"+id_ext+"'")
+	#cursor.execute("update drinkers set coffees = coffees_new where id_ext = '"+id_ext+"'")
 	db.commit()
 	db.close()
