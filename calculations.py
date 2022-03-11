@@ -146,9 +146,8 @@ def delete_coffee(name, test):
 	persons_new=[]
 	for i in range(len(persons)):
 		if persons[i] == name.upper():
-			st.write("True")
 			coffees[i] = int(coffees[i]) - 1
-			#cursor.execute("update mbr_"+name.upper()+" set n_coffees = "+coffees[i]+" where id_ext = '"+id_ext+"'")
+			cursor.execute("update mbr_"+name.upper()+" set n_coffees = "+coffees[i]+" where id_ext = '"+id_ext+"'")
 		if coffees[i] == 0:
 			persons.pop(i)
 			coffees.pop(i)
