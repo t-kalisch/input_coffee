@@ -89,20 +89,20 @@ if st.session_state.logged_in == True:
         update = col2.button("Update", help="Update coffee break status")
         if st.session_state.admin == True:
             name = col2.text_input("Drinker", placeholder = "Username")
-            submit_button = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.", on_click=submit_coffee, args=(st.session_state.user, name, "add"))
+            submit_button = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.", on_click=submit_coffee, args=(st.session_state.user, name))
             col2.write("-" * 34)
             del_person = col2.text_input("Delete coffee for person", placeholder = "username")
             del_coffee = col2.button("Delete coffee from current break", on_click=delete_coffee, args=(del_person,""))
         else:
-            submit_button = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.", on_click=submit_coffee, args=(st.session_state.user, "", "add"))
+            submit_button = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.", on_click=submit_coffee, args=(st.session_state.user, ""))
     elif break_length.total_seconds() > 785:                                                #average break length is 13:05.0171 aka 785 seconds
         col2.markdown("No coffee break is currently under way.")
         update = col2.button("Update", help="Update coffee break status")
         if st.session_state.admin == True:
             name = col2.text_input("Drinker", placeholder = "Username")
-            submit_button = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click=submit_coffee, args=(st.session_state.user, name, "new"))
+            submit_button = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click=submit_coffee, args=(st.session_state.user, name))
         else:
-            submit_button = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click=submit_coffee, args=(st.session_state.user, "", "new"))
+            submit_button = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click=submit_coffee, args=(st.session_state.user, ""))
             
 
 
