@@ -99,7 +99,7 @@ if st.session_state.logged_in == True:
             col3.write("Coffees")
             col3.write(current[0][1])
             col1,col2,col3,col4 = st.columns([0.5,0.6,0.4,0.7])
-            del_person = col2.text_input("Delete coffee for person", placeholder = "username")
+            del_person = col2.text_input("Delete coffee for person", placeholder = "Username")
             del_coffee = col2.button("Delete coffee from current break", on_click=delete_coffee, args=(del_person,""))
         else:
             submit_button = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.", on_click=submit_coffee, args=(st.session_state.user, ""))
