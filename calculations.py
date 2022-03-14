@@ -36,6 +36,7 @@ def submit_coffee(user, name):
 	break_length = check_breakstatus(datetime.datetime.now())
 	if break_length.total_seconds() > 785:                                                 #average break length is 13:05.0171 aka 785 seconds
 		cursor.execute("update update_status set last_break = current_timestamp()")
+		db.commit()
 		#---------------------- creating the extended id -----------------------
 		id_ext=str(datetime.date.today().year)
 		day_break=str(datetime.date.today().day)
