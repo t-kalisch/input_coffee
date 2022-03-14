@@ -176,3 +176,10 @@ def delete_coffee(name, test):
 		cursor.execute("update drinkers set coffees = '"+coffees_new+"' where id_ext = '"+id_ext+"'")
 	db.commit()
 	db.close()
+
+def cur_break():
+	db = init_connection()
+	cursor = db.cursor(buffered=True)
+	cursor.execute("select persons, coffees from drinkers ORDER BY id DESC LIMIT 1")
+	current = cursor.fetchall()
+	return current
