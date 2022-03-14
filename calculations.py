@@ -34,7 +34,7 @@ def submit_coffee(user, name):
 	db = init_connection()
 	cursor = db.cursor(buffered=True)
 	break_length = check_breakstatus(datetime.datetime.now())
-	if break_length.total_seconds() <= 785:                                                 #average break length is 13:05.0171 aka 785 seconds
+	if break_length.total_seconds() > 785:                                                 #average break length is 13:05.0171 aka 785 seconds
 		cursor.execute("update update_status set last_break = current_timestamp()")
 		#---------------------- creating the extended id -----------------------
 		id_ext=str(datetime.date.today().year)
@@ -66,7 +66,7 @@ def submit_coffee(user, name):
 			cursor.execute("insert into drinkers (id_ext, persons, coffees) values (%s, %s, %s)", (id_ext, name.upper(), 1))
 		st.success("Your 1. coffee for this break has been saved!")
 		
-	elif break_length.total_seconds() > 785:                                                #average break length is 13:05.0171 aka 785 seconds
+	elif break_length.total_seconds() <= 785:                                                #average break length is 13:05.0171 aka 785 seconds
 		cursor.execute("select max(id_ext) from breaks")
 		id_ext=cursor.fetchall()[0][0]
 		
