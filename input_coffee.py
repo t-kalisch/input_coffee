@@ -91,6 +91,8 @@ if st.session_state.logged_in == True:
             name = col2.text_input("Drinker", placeholder = "Username")
             submit_button = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.", on_click=submit_coffee, args=(st.session_state.user, name))
             col2.write("-" * 34)
+            df = pd.DataFrame(cur_break(),columns=columns)
+            col2.dataframe(df, width=600, height=500)
             del_person = col2.text_input("Delete coffee for person", placeholder = "username")
             del_coffee = col2.button("Delete coffee from current break", on_click=delete_coffee, args=(del_person,""))
         else:
