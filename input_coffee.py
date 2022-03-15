@@ -89,7 +89,7 @@ if st.session_state.logged_in == True:
         col1,col2,col3,col4 = st.columns([0.5,0.6,0.4,0.7])
         update = col2.button("Update", help="Update coffee break status")
         if st.session_state.admin == True:
-            name = col2.text_input("Drinker", placeholder = "Username")
+            name = col2.text_input("Drinker", placeholder = st.session_state.user)
             submit_button = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.", on_click=submit_coffee, args=(st.session_state.user, name))
             col2.write("-" * 34)
             col1,col2,col3,col4,col5 = st.columns([0.5,0.3,0.3,0.4,0.7])
