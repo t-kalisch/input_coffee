@@ -107,7 +107,7 @@ if st.session_state.logged_in == True:
         col2.markdown("No coffee break is currently under way.")
         update = col2.button("Update", help="Update coffee break status")
         if st.session_state.admin == True:
-            name = col2.text_input("Drinker", placeholder = "Username")
+            name = col2.text_input("Drinker", placeholder = st.session_state.user)
             submit_button = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click=submit_coffee, args=(st.session_state.user, name))
         else:
             submit_button = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click=submit_coffee, args=(st.session_state.user, ""))
