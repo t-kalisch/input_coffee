@@ -91,7 +91,7 @@ else:
 
 
         
-if st.session_state.logged_in == True and st.session_state.attempt == False:
+if (st.session_state.logged_in == "true" or st.session_state.logged_in == True) and st.session_state.attempt == False:
     header2.markdown("Logged in as "+st.session_state.user)
 else:
     header2.markdown("Please log in to submit a coffee")
