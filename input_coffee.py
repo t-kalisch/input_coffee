@@ -2,12 +2,16 @@ import streamlit as st
 import datetime
 from calculations import *
 import pandas as pd
+import extra_streamlit_components as stx
 
 st.set_page_config(page_title="Input Coffee",page_icon="coffee",layout="wide")
 
-logged_in = False
-buf1,header2,buf2 = st.columns([0.5,1,0.7])
-header2.title("**:coffee:** Input coffee")
+@st.cache(allow_output_mutation=True, suppress_st_warning = True)
+def get_manager():
+    return stx.CookieManager()
+
+cookie_manager = get_manager()
+cookie_manager.get_all()
 
 if 'submit' not in st.session_state:
     st.session_state.submit = 0
@@ -20,6 +24,29 @@ if 'attempt' not in st.session_state:
 if 'admin' not in st.session_state:
     st.session_state.admin=False
 
+if cookie_manager.get(cookie="logged_in") == "true":
+    st.session_state.logged_in="true"
+    st.session_state.user = cookie_manager.get(cookie="user")
+    st.session_state.admin=cookie_manager.get(cookie="status")
+
+
+logged_in=st.session_state.logged_in
+logged_in_user=st.session_state.user_name
+admin_status=st.session_state.admin
+
+
+buf1,header2,buf2 = st.columns([0.5,1,0.7])
+header2.title("**:coffee:** Input coffee")
+
+        
+count=0
+
+col1,col2,col3 = st.columns([0.5,1,0.7])
+user = col2.text_input(label="", placeholder="Username", key="username")
+user_pw = col2.text_input(label="", type="password", placeholder="Password", key="userpassword")
+col1,col2,col3,col4 = st.columns([0.5,0.6,0.4,0.7])
+
+remember_me = col3.checkbox("Remember me", help="Keep me logged in")
 
 def check_login(user, user_pw):
     logged_in = False
@@ -34,7 +61,14 @@ def check_login(user, user_pw):
         st.session_state.logged_in=True
         st.session_state.attempt=False
         st.session_state.submit=0
-
+        if remember_me:
+            cookie_manager.set("logged_in", st.session_state.true, expires_at=datetime.datetime(year=2030, month=1, day=1), key="logged_in_true")
+            cookie_manager.set("user", st.session_state.user, expires_at=datetime.datetime(year=2030, month=1, day=1), key="logged_in_user")
+            cookie_manager.set("status", st.session_state.admin, expires_at=datetime.datetime(year=2030, month=1, day=1), key="admin_status")
+        else:
+            cookie_manager.set("logged_in", False, expires_at=datetime.datetime(year=2030, month=1, day=1), key="logout")
+            cookie_manager.set("status", None, expires_at=datetime.datetime(year=2030, month=1, day=1), key="del_admin_status")
+            cookie_manager.set("user", None, expires_at=datetime.datetime(year=2030, month=1, day=1), key="logged_in_user") 
     else:
         st.session_state.logged_in=False
         st.session_state.attempt=True    
@@ -44,22 +78,19 @@ def logout():
         st.session_state.attempt=False
         st.session_state.admin=False
         st.session_state.user=None
-        
-count=0
 
-col1,col2,col3 = st.columns([0.5,1,0.7])
-user = col2.text_input(label="", placeholder="Username", key="username")
-user_pw = col2.text_input(label="", type="password", placeholder="Password", key="userpassword")
-col1,col2,col3,col4 = st.columns([0.5,0.6,0.4,0.7])
-    
+
+
 if st.session_state.logged_in == True:
     logout = col2.button("Logout", help="Click here to log out", key="logout_button", on_click=logout)
 else:
     login = col2.button("Login", help="Click here to log in", key="login_button", on_click=check_login, args=(user, user_pw))
     
-col3.checkbox("Remember me", help="Keep me logged in")
 
-            
+
+
+
+
         
 if st.session_state.logged_in == True and st.session_state.attempt == False:
     header2.markdown("Logged in as "+st.session_state.user)
