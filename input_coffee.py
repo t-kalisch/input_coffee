@@ -77,6 +77,9 @@ def logout():
         st.session_state.attempt=False
         st.session_state.admin=False
         st.session_state.user=None
+        cookie_manager.set("logged_in", False, expires_at=datetime.datetime(year=2030, month=1, day=1), key="logout")
+        cookie_manager.set("admin", None, expires_at=datetime.datetime(year=2030, month=1, day=1), key="del_admin_status")
+        cookie_manager.set("user", None, expires_at=datetime.datetime(year=2030, month=1, day=1), key="logged_in_user") 
 
 st.write(st.session_state.admin)
 
