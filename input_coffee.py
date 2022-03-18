@@ -30,9 +30,7 @@ if cookie_manager.get(cookie="logged_in") == "true":
     st.session_state.admin=cookie_manager.get(cookie="status")
 
 
-logged_in=st.session_state.logged_in
-logged_in_user=st.session_state.user_name
-admin_status=st.session_state.admin
+#logged_in=st.session_state.logged_in
 
 
 buf1,header2,buf2 = st.columns([0.5,1,0.7])
@@ -46,7 +44,7 @@ user = col2.text_input(label="", placeholder="Username", key="username")
 user_pw = col2.text_input(label="", type="password", placeholder="Password", key="userpassword")
 col1,col2,col3,col4 = st.columns([0.5,0.6,0.4,0.7])
 
-remember_me = col3.checkbox("Remember me", help="Keep me logged in")
+remember_me = col3.checkbox("Remember me", help="Keep me logged in (uses cookies)")
 
 def check_login(user, user_pw):
     logged_in = False
