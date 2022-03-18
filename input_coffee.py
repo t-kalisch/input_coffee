@@ -104,7 +104,7 @@ else:
 if st.session_state.attempt == True:
     st.warning("Incorrect username or password")
     
-if st.session_state.logged_in == True:
+if st.session_state.logged_in == "true" or st.session_state.logged_in == True:
     now = datetime.datetime.now()
     break_length = check_breakstatus(now)
     minutes = str(int(break_length.seconds/60))
