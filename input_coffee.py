@@ -78,7 +78,7 @@ def logout():
         st.session_state.admin=False
         st.session_state.user=None
 
-st.write(st.session_state.logged_in)
+st.write(st.session_state.admin)
 
 if st.session_state.logged_in == "true" or st.session_state.logged_in == True:
     logout = col2.button("Logout", help="Click here to log out", key="logout_button", on_click=logout)
@@ -118,7 +118,7 @@ if st.session_state.logged_in == "true" or st.session_state.logged_in == True:
         middle.markdown("A coffee break is under way since "+str(minutes)+":"+strseconds+". (total length: 13:05)")
         col1,col2,col3,col4 = st.columns([0.5,0.6,0.4,0.7])
         update = col2.button("Update", help="Update coffee break status")
-        if st.session_state.admin == True:
+        if st.session_state.admin == True or st.session_state.admin == "true":
             name = col2.text_input("Drinker", placeholder = st.session_state.user)
             submit_button = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.", on_click=submit_coffee, args=(st.session_state.user, name))
             col2.write("-" * 34)
@@ -136,7 +136,7 @@ if st.session_state.logged_in == "true" or st.session_state.logged_in == True:
     elif break_length.total_seconds() > 785:                                                #average break length is 13:05.0171 aka 785 seconds
         col2.markdown("No coffee break is currently under way.")
         update = col2.button("Update", help="Update coffee break status")
-        if st.session_state.admin == True:
+        if st.session_state.admin == True or st.session_state.admin == "true":
             name = col2.text_input("Drinker", placeholder = st.session_state.user)
             submit_button = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click=submit_coffee, args=(st.session_state.user, name))
         else:
