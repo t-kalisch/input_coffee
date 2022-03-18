@@ -78,7 +78,7 @@ def logout():
         st.session_state.admin=False
         st.session_state.user=None
 
-
+st.write(session_state.logged_in)
 
 if st.session_state.logged_in == True:
     logout = col2.button("Logout", help="Click here to log out", key="logout_button", on_click=logout)
