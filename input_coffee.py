@@ -2,16 +2,16 @@ import streamlit as st
 import datetime
 from calculations import *
 import pandas as pd
-import extra_streamlit_components as stx
+#import extra_streamlit_components as stx
 
 st.set_page_config(page_title="Input Coffee",page_icon="coffee",layout="wide")
 
-@st.cache(allow_output_mutation=True, suppress_st_warning = True)
-def get_manager():
-    return stx.CookieManager()
+#@st.cache(allow_output_mutation=True, suppress_st_warning = True)
+#def get_manager():
+#    return stx.CookieManager()
 
-cookie_manager = get_manager()
-cookie_manager.get_all()
+#cookie_manager = get_manager()
+#cookie_manager.get_all()
 
 if 'submit' not in st.session_state:
     st.session_state.submit = 0
@@ -24,13 +24,14 @@ if 'attempt' not in st.session_state:
 if 'admin' not in st.session_state:
     st.session_state.admin=False
 
-if cookie_manager.get(cookie="logged_in") == "true":
-    st.session_state.logged_in="true"
-    st.session_state.user = cookie_manager.get(cookie="user")
-    st.session_state.admin=cookie_manager.get(cookie="admin")
+#if cookie_manager.get(cookie="logged_in") == "true":
+#    st.session_state.logged_in="true"
+#    st.session_state.user = cookie_manager.get(cookie="user")
+#    st.session_state.admin=cookie_manager.get(cookie="admin")
 
 
 logged_in=st.session_state.logged_in
+username = st.session_state.user
 
 
 
@@ -77,9 +78,9 @@ def logout():
         st.session_state.attempt=False
         st.session_state.admin=False
         st.session_state.user=None
-        cookie_manager.set("logged_in", False, expires_at=datetime.datetime(year=2030, month=1, day=1), key="logout")
-        cookie_manager.set("admin", None, expires_at=datetime.datetime(year=2030, month=1, day=1), key="del_admin_status")
-        cookie_manager.set("user", None, expires_at=datetime.datetime(year=2030, month=1, day=1), key="logged_in_user") 
+        #cookie_manager.set("logged_in", False, expires_at=datetime.datetime(year=2030, month=1, day=1), key="logout")
+        #cookie_manager.set("admin", None, expires_at=datetime.datetime(year=2030, month=1, day=1), key="del_admin_status")
+        #cookie_manager.set("user", None, expires_at=datetime.datetime(year=2030, month=1, day=1), key="logged_in_user") 
 
 
 if st.session_state.logged_in == "true" or st.session_state.logged_in == True:
