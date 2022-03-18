@@ -3,3 +3,4 @@ numpy
 pandas
 mysql-connector-python==8.0.27
 #streamlit_cookies_manager
+extra_streamlit_components~=0.1.3
