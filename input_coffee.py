@@ -46,7 +46,7 @@ user = col2.text_input(label="", placeholder="Username", key="username")
 user_pw = col2.text_input(label="", type="password", placeholder="Password", key="userpassword")
 col1,col2,col3,col4 = st.columns([0.5,0.6,0.4,0.7])
 
-remember_me = col3.checkbox("Remember me", help="Keep me logged in (uses cookies)")
+#remember_me = col3.checkbox("Remember me", help="Keep me logged in (uses cookies)")
 
 def check_login(user, user_pw):
     logged_in = False
