@@ -59,14 +59,14 @@ def check_login(user, user_pw):
         st.session_state.logged_in=True
         st.session_state.attempt=False
         st.session_state.submit=0
-        if remember_me:
-            cookie_manager.set("logged_in", st.session_state.logged_in, expires_at=datetime.datetime(year=2030, month=1, day=1), key="logged_in_true")
-            cookie_manager.set("user", st.session_state.user, expires_at=datetime.datetime(year=2030, month=1, day=1), key="logged_in_user")
-            cookie_manager.set("status", st.session_state.admin, expires_at=datetime.datetime(year=2030, month=1, day=1), key="admin_status")
-        else:
-            cookie_manager.set("logged_in", False, expires_at=datetime.datetime(year=2030, month=1, day=1), key="logout")
-            cookie_manager.set("status", None, expires_at=datetime.datetime(year=2030, month=1, day=1), key="del_admin_status")
-            cookie_manager.set("user", None, expires_at=datetime.datetime(year=2030, month=1, day=1), key="logged_in_user") 
+        #if remember_me:
+        #    cookie_manager.set("logged_in", st.session_state.logged_in, expires_at=datetime.datetime(year=2030, month=1, day=1), key="logged_in_true")
+        #    cookie_manager.set("user", st.session_state.user, expires_at=datetime.datetime(year=2030, month=1, day=1), key="logged_in_user")
+        #    cookie_manager.set("status", st.session_state.admin, expires_at=datetime.datetime(year=2030, month=1, day=1), key="admin_status")
+        #else:
+        #    cookie_manager.set("logged_in", False, expires_at=datetime.datetime(year=2030, month=1, day=1), key="logout")
+        #    cookie_manager.set("status", None, expires_at=datetime.datetime(year=2030, month=1, day=1), key="del_admin_status")
+        #    cookie_manager.set("user", None, expires_at=datetime.datetime(year=2030, month=1, day=1), key="logged_in_user") 
     else:
         st.session_state.logged_in=False
         st.session_state.attempt=True    
