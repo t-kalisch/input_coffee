@@ -30,7 +30,8 @@ if cookie_manager.get(cookie="logged_in") == "true":
     st.session_state.admin=cookie_manager.get(cookie="admin")
 
 
-#logged_in=st.session_state.logged_in
+logged_in=st.session_state.logged_in
+
 
 
 buf1,header2,buf2 = st.columns([0.5,1,0.7])
