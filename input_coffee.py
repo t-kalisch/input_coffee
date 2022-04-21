@@ -124,19 +124,25 @@ if st.session_state.logged_in == "true" or st.session_state.logged_in == True:
         if st.session_state.admin == True or st.session_state.admin == "true":
             name = col2.text_input("Drinker", placeholder = st.session_state.user)
             submit_button = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.", on_click=submit_coffee, args=(st.session_state.user, name))
-        col2.write("-" * 34)
-        col1,col2,col3,col4,col5 = st.columns([0.5,0.3,0.3,0.4,0.7])
-        current = cur_break()
-        col2.write("Persons")
-        col2.write(current[0][0])
-        col3.write("Coffees")
-        col3.write(current[0][1])
-        if st.session_state.admin == True or st.session_state.admin == "true":
+            col2.write("-" * 34)
+            col1,col2,col3,col4,col5 = st.columns([0.5,0.3,0.3,0.4,0.7])
+            current = cur_break()
+            col2.write("Persons")
+            col2.write(current[0][0])
+            col3.write("Coffees")
+            col3.write(current[0][1])
             col1,col2,col3,col4 = st.columns([0.5,0.6,0.4,0.7])
             del_person = col2.text_input("Delete coffee for person", placeholder = "Username")
             del_coffee = col2.button("Delete coffee from current break", on_click=delete_coffee, args=(del_person,""))
         else:
             submit_button = col2.button("Add coffee to coffee break", help = "A break is under way. Join it by adding a coffee here.", on_click=submit_coffee, args=(st.session_state.user, ""))
+            col2.write("-" * 34)
+            col1,col2,col3,col4,col5 = st.columns([0.5,0.3,0.3,0.4,0.7])
+            current = cur_break()
+            col2.write("Persons")
+            col2.write(current[0][0])
+            col3.write("Coffees")
+            col3.write(current[0][1])
     elif break_length.total_seconds() > 785:                                                #average break length is 13:05.0171 aka 785 seconds
         col2.markdown("No coffee break is currently under way.")
         update = col2.button("Update", help="Update coffee break status")
@@ -145,6 +151,13 @@ if st.session_state.logged_in == "true" or st.session_state.logged_in == True:
             submit_button = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click=submit_coffee, args=(st.session_state.user, name))
         else:
             submit_button = col2.button("Start a coffee break", help = "Start a break and add a coffee to your name here.", on_click=submit_coffee, args=(st.session_state.user, ""))
+            col2.write("-" * 34)
+            col1,col2,col3,col4,col5 = st.columns([0.5,0.3,0.3,0.4,0.7])
+            current = cur_break()
+            col2.write("Persons")
+            col2.write(current[0][0])
+            col3.write("Coffees")
+            col3.write(current[0][1])
             
 
 
